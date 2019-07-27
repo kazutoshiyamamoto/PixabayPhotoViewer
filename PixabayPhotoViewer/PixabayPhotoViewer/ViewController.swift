@@ -110,6 +110,9 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pixabayCollectionViewCell", for: indexPath) as! pixabayCollectionViewCell
         
+        cell.pixabayImageView.image = nil
+        cell.imageCreatorNameLabel.text = nil
+        
         let item = self.items?.hits[indexPath.row]
         cell.imageCreatorNameLabel.text = item?.user
         let previewUrl = URL(string: item?.previewURL ?? "")!
