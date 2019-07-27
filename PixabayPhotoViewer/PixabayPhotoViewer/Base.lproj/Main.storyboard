@@ -18,9 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WBI-T0-dNb">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WBI-T0-dNb">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DGf-lK-eMj">
                                     <size key="itemSize" width="50" height="50"/>
@@ -32,6 +31,12 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="WBI-T0-dNb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Hny-9W-9mj"/>
+                            <constraint firstItem="WBI-T0-dNb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TIz-bZ-hzi"/>
+                            <constraint firstItem="WBI-T0-dNb" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="uep-sR-kgZ"/>
+                            <constraint firstItem="WBI-T0-dNb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="y4t-II-ZS6"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
