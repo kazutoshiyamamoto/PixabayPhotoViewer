@@ -22,13 +22,24 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VMl-RE-dbB">
                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbT-nb-LEB">
+                        <rect key="frame" x="0.0" y="79" width="57" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="57" id="OWy-oT-NuW"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="VMl-RE-dbB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="0tp-bo-hzL"/>
                 <constraint firstItem="VMl-RE-dbB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Bwp-KU-TQf"/>
+                <constraint firstAttribute="bottom" secondItem="ZbT-nb-LEB" secondAttribute="bottom" id="PNo-lR-rif"/>
                 <constraint firstAttribute="trailing" secondItem="VMl-RE-dbB" secondAttribute="trailing" id="Vty-t6-GQY"/>
                 <constraint firstAttribute="bottom" secondItem="VMl-RE-dbB" secondAttribute="bottom" id="soo-of-Nt2"/>
+                <constraint firstItem="ZbT-nb-LEB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ywX-p4-c1f"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="100" height="100"/>
