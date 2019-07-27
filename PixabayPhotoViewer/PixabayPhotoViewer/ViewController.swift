@@ -14,7 +14,19 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        pixabayCollectionView.register(UINib(nibName: "pixabayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "pixabayCollectionViewCell")
+        self.pixabayCollectionView.register(UINib(nibName: "pixabayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "pixabayCollectionViewCell")
+        
+        self.pixabayCollectionView.delegate = self
+    }
+}
+
+extension ViewController:  UICollectionViewDelegateFlowLayout {
+    // セルの大きさ
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let numberOfCell: CGFloat = 3
+        let cellWidth = UIScreen.main.bounds.size.width / numberOfCell - 3
+        return CGSize(width: cellWidth, height: cellWidth)
     }
 }
 
