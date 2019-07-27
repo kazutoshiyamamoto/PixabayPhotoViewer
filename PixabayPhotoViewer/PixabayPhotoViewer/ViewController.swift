@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var pixabayCollectionView: UICollectionView!
     
     private var items: Item?
+    private let preheater = ImagePreheater()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class ViewController: UIViewController {
         
         self.pixabayCollectionView.delegate = self
         self.pixabayCollectionView.dataSource = self
+        self.pixabayCollectionView.prefetchDataSource = self
         
         self.setUpCollectionItems()
     }
@@ -46,7 +48,7 @@ class ViewController: UIViewController {
     private func getCollectionItems(completionHandler: @escaping (Item) -> ()) {
         let configuration = URLSessionConfiguration.default
         
-        if let url = URL(string: "https://pixabay.com/api/?key=13068565-c1fdd03743ba0daf1922d861e&q=city&image_type=photo") {
+        if let url = URL(string: "https://pixabay.com/api/?key={APIKey}&q=city&image_type=photo") {
             self.getAddConfiguration(url: url, configuration: configuration, completionHandler: {(data, response, error) -> Void in
                 if let data = data {
                     
@@ -107,4 +109,21 @@ extension ViewController: UICollectionViewDataSource {
         return cell
     }
 }
+
+extension ViewController: UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        let urls = indexPaths.map { URL(string: self.items?.hits[$0.row].previewURL ?? "") }
+        preheater.startPreheating(with: urls as! [URL])
+        
+        print("prefetchItemsAt: \(indexPaths)")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        let urls = indexPaths.map { URL(string: self.items?.hits[$0.row].previewURL ?? "") }
+        preheater.stopPreheating(with: urls as! [URL])
+        
+        print("cancelPrefetchingForItemsAt: \(indexPaths)")
+    }
+}
+
 
