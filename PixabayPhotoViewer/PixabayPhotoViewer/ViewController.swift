@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Nuke
 
 class ViewController: UIViewController {
     
