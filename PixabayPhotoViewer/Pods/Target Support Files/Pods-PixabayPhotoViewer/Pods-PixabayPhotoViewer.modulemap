@@ -1,0 +1,6 @@
+framework module Pods_PixabayPhotoViewer {
+  umbrella header "Pods-PixabayPhotoViewer-umbrella.h"
+
+  export *
+  module * { export * }
+}
