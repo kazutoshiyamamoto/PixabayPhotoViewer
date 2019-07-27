@@ -19,12 +19,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VMl-RE-dbB">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VMl-RE-dbB">
                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                 </subviews>
             </view>
+            <constraints>
+                <constraint firstItem="VMl-RE-dbB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="0tp-bo-hzL"/>
+                <constraint firstItem="VMl-RE-dbB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Bwp-KU-TQf"/>
+                <constraint firstAttribute="trailing" secondItem="VMl-RE-dbB" secondAttribute="trailing" id="Vty-t6-GQY"/>
+                <constraint firstAttribute="bottom" secondItem="VMl-RE-dbB" secondAttribute="bottom" id="soo-of-Nt2"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="100" height="100"/>
             <point key="canvasLocation" x="173.91304347826087" y="111.16071428571428"/>
