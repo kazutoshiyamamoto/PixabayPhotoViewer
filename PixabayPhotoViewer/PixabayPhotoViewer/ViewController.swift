@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var pixabayCollectionView: View!
+    @IBOutlet weak var pixabayCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

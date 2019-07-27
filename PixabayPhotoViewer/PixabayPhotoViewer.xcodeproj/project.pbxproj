@@ -12,6 +12,8 @@
 		FD9BD62522EC90A9009C10EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD9BD62322EC90A9009C10EC /* Main.storyboard */; };
 		FD9BD62722EC90AD009C10EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD9BD62622EC90AD009C10EC /* Assets.xcassets */; };
 		FD9BD62A22EC90AD009C10EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD9BD62822EC90AD009C10EC /* LaunchScreen.storyboard */; };
+		FD9BD63322EC92D6009C10EC /* pixabayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9BD63122EC92D6009C10EC /* pixabayCollectionViewCell.swift */; };
+		FD9BD63422EC92D6009C10EC /* pixabayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD9BD63222EC92D6009C10EC /* pixabayCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		FD9BD62622EC90AD009C10EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD9BD62922EC90AD009C10EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD9BD62B22EC90AD009C10EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD9BD63122EC92D6009C10EC /* pixabayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pixabayCollectionViewCell.swift; sourceTree = "<group>"; };
+		FD9BD63222EC92D6009C10EC /* pixabayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = pixabayCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				FD9BD61F22EC90A9009C10EC /* AppDelegate.swift */,
 				FD9BD62122EC90A9009C10EC /* ViewController.swift */,
+				FD9BD63122EC92D6009C10EC /* pixabayCollectionViewCell.swift */,
+				FD9BD63222EC92D6009C10EC /* pixabayCollectionViewCell.xib */,
 				FD9BD62322EC90A9009C10EC /* Main.storyboard */,
 				FD9BD62622EC90AD009C10EC /* Assets.xcassets */,
 				FD9BD62822EC90AD009C10EC /* LaunchScreen.storyboard */,
@@ -125,6 +131,7 @@
 				FD9BD62A22EC90AD009C10EC /* LaunchScreen.storyboard in Resources */,
 				FD9BD62722EC90AD009C10EC /* Assets.xcassets in Resources */,
 				FD9BD62522EC90A9009C10EC /* Main.storyboard in Resources */,
+				FD9BD63422EC92D6009C10EC /* pixabayCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD9BD63322EC92D6009C10EC /* pixabayCollectionViewCell.swift in Sources */,
 				FD9BD62222EC90A9009C10EC /* ViewController.swift in Sources */,
 				FD9BD62022EC90A9009C10EC /* AppDelegate.swift in Sources */,
 			);
