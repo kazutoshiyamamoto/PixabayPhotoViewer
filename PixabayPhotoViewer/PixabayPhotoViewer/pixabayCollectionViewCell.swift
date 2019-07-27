@@ -10,6 +10,8 @@ import UIKit
 
 class pixabayCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var pixabayImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

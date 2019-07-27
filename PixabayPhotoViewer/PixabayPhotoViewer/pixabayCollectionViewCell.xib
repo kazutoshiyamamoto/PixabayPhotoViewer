@@ -32,6 +32,9 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="100" height="100"/>
+            <connections>
+                <outlet property="pixabayImageView" destination="VMl-RE-dbB" id="vhS-tJ-GEq"/>
+            </connections>
             <point key="canvasLocation" x="173.91304347826087" y="111.16071428571428"/>
         </collectionViewCell>
     </objects>
