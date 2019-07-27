@@ -70,8 +70,17 @@ class ViewController: UIViewController {
     }
 }
 
+// セル選択時の処理
+extension ViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let url = URL(string: self.items?.hits[indexPath.row].webformatURL ?? "") {
+            UIApplication.shared.open(url)
+        }
+    }
+}
+
+// セルの大きさ
 extension ViewController:  UICollectionViewDelegateFlowLayout {
-    // セルの大きさ
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let numberOfCell: CGFloat = 3
