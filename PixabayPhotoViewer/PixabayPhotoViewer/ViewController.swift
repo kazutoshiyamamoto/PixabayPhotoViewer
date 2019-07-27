@@ -34,6 +34,15 @@ class ViewController: UIViewController {
         self.pixabayCollectionView.prefetchDataSource = self
         
         self.setUpCollectionItems()
+
+        let refreshControl = UIRefreshControl()
+        self.pixabayCollectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(ViewController.refresh(sender:)), for: .valueChanged)
+    }
+    
+    @objc func refresh(sender: UIRefreshControl) {
+        self.setUpCollectionItems()
+        sender.endRefreshing()
     }
     
     private func setUpCollectionItems() {
