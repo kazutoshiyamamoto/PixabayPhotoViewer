@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var pixabayCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -17,6 +17,7 @@ class ViewController: UIViewController {
         self.pixabayCollectionView.register(UINib(nibName: "pixabayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "pixabayCollectionViewCell")
         
         self.pixabayCollectionView.delegate = self
+        self.pixabayCollectionView.dataSource = self
     }
 }
 
@@ -27,6 +28,20 @@ extension ViewController:  UICollectionViewDelegateFlowLayout {
         let numberOfCell: CGFloat = 3
         let cellWidth = UIScreen.main.bounds.size.width / numberOfCell - 3
         return CGSize(width: cellWidth, height: cellWidth)
+    }
+}
+
+extension ViewController: UICollectionViewDataSource {
+    // セルの数
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    // セルの設定
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pixabayCollectionViewCell", for: indexPath) as! pixabayCollectionViewCell
+        
+        return cell
     }
 }
 
