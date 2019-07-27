@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     private func getCollectionItems(completionHandler: @escaping (Item) -> ()) {
         let configuration = URLSessionConfiguration.default
         
-        if let url = URL(string: "https://pixabay.com/api/?key={APIKey}&q=city&image_type=photo") {
+        if let url = URL(string: "https://pixabay.com/api/?key=13068565-c1fdd03743ba0daf1922d861e&q=city&image_type=photo") {
             self.getAddConfiguration(url: url, configuration: configuration, completionHandler: {(data, response, error) -> Void in
                 if let data = data {
                     
