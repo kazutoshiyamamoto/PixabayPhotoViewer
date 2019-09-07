@@ -13,41 +13,39 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="pixabayCollectionViewCell" customModule="PixabayPhotoViewer" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="100" height="143"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                <rect key="frame" x="0.0" y="0.0" width="100" height="143"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VMl-RE-dbB">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VMl-RE-dbB">
                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbT-nb-LEB">
-                        <rect key="frame" x="0.0" y="86.5" width="30" height="13.5"/>
-                        <color key="backgroundColor" white="1" alpha="0.80153039383561642" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="OWy-oT-NuW"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbT-nb-LEB">
+                        <rect key="frame" x="0.0" y="129.5" width="30" height="13.5"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="0.79751712328767121" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9Q-M0-Jg1">
+                        <rect key="frame" x="0.0" y="99" width="42" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
-            <constraints>
-                <constraint firstItem="VMl-RE-dbB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="0tp-bo-hzL"/>
-                <constraint firstItem="VMl-RE-dbB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Bwp-KU-TQf"/>
-                <constraint firstAttribute="bottom" secondItem="ZbT-nb-LEB" secondAttribute="bottom" id="PNo-lR-rif"/>
-                <constraint firstAttribute="trailing" secondItem="VMl-RE-dbB" secondAttribute="trailing" id="Vty-t6-GQY"/>
-                <constraint firstAttribute="bottom" secondItem="VMl-RE-dbB" secondAttribute="bottom" id="soo-of-Nt2"/>
-                <constraint firstItem="ZbT-nb-LEB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ywX-p4-c1f"/>
-            </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="100" height="100"/>
+            <size key="customSize" width="100" height="143"/>
             <connections>
                 <outlet property="imageCreatorNameLabel" destination="ZbT-nb-LEB" id="gfe-qW-jXC"/>
                 <outlet property="pixabayImageView" destination="VMl-RE-dbB" id="vhS-tJ-GEq"/>
             </connections>
-            <point key="canvasLocation" x="173.91304347826087" y="111.16071428571428"/>
+            <point key="canvasLocation" x="173.91304347826087" y="125.55803571428571"/>
         </collectionViewCell>
     </objects>
 </document>
