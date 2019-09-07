@@ -12,8 +12,9 @@ import Nuke
 struct Item: Codable {
     var hits: [Hits]
     struct Hits: Codable {
-        var user: String
         var previewURL: String
+        var tags: String
+        var user: String
         var webformatURL: String
     }
 }
@@ -57,7 +58,7 @@ class ViewController: UIViewController {
     private func getCollectionItems(completionHandler: @escaping (Item) -> ()) {
         let configuration = URLSessionConfiguration.default
         
-        if let url = URL(string: "https://pixabay.com/api/?key={APIKey}&q=city&image_type=photo") {
+        if let url = URL(string: "https://pixabay.com/api/?key={APIKey}&q=sea&image_type=photo") {
             self.getAddConfiguration(url: url, configuration: configuration, completionHandler: {(data, response, error) -> Void in
                 if let data = data {
                     
