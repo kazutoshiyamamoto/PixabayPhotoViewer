@@ -112,12 +112,14 @@ extension ViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pixabayCollectionViewCell", for: indexPath) as! pixabayCollectionViewCell
         
         cell.pixabayImageView.image = nil
+        cell.imageTagLabel.text = nil
         cell.imageCreatorNameLabel.text = nil
         
         let item = self.items?.hits[indexPath.row]
-        cell.imageCreatorNameLabel.text = item?.user
         let previewUrl = URL(string: item?.previewURL ?? "")!
         Nuke.loadImage(with: previewUrl, into: cell.pixabayImageView)
+        cell.imageTagLabel.text = item?.tags
+        cell.imageCreatorNameLabel.text = item?.user
         
         return cell
     }
