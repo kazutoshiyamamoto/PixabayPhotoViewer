@@ -11,6 +11,7 @@ import UIKit
 class pixabayCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var pixabayImageView: UIImageView!
+    @IBOutlet weak var imageTag: UILabel!
     @IBOutlet weak var imageCreatorNameLabel: UILabel!
     
     override func awakeFromNib() {
