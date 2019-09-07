@@ -94,10 +94,10 @@ extension ViewController: UICollectionViewDelegate {
 // セルの大きさ
 extension ViewController:  UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+
         let numberOfCell: CGFloat = 3
-        let cellWidth = UIScreen.main.bounds.size.width / numberOfCell - 3
-        return CGSize(width: cellWidth, height: cellWidth)
+        let cellWidth = UIScreen.main.bounds.size.width  / numberOfCell - 6
+        return CGSize(width: cellWidth, height: 160)
     }
 }
 
