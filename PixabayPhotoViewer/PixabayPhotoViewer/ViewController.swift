@@ -97,7 +97,6 @@ class ViewController: UIViewController {
 extension ViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height - 800) && !self.isLoadingList) {
-            print("読み込み開始")
             self.isLoadingList = true
             self.setUpCollectionItems()
         }
