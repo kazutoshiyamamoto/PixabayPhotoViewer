@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         self.pixabayCollectionView.prefetchDataSource = self
         
         self.setUpCollectionItems()
-
+        
         let refreshControl = UIRefreshControl()
         self.pixabayCollectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(ViewController.refresh(sender:)), for: .valueChanged)
@@ -58,7 +58,12 @@ class ViewController: UIViewController {
     private func getCollectionItems(completionHandler: @escaping (Item) -> ()) {
         let configuration = URLSessionConfiguration.default
         
-        if let url = URL(string: "https://pixabay.com/api/?key={APIKey}&q=sea&image_type=photo") {
+        let url = URL(string: "https://pixabay.com/api/")!
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        components?.queryItems = [URLQueryItem(name: "key", value: "13068565-c1fdd03743ba0daf1922d861e")] + [URLQueryItem(name: "q", value: "sea")] + [URLQueryItem(name: "image_type", value: "photo")]
+        let queryStringAddedUrl = components?.url
+        
+        if let url = queryStringAddedUrl {
             self.getAddConfiguration(url: url, configuration: configuration, completionHandler: {(data, response, error) -> Void in
                 if let data = data {
                     
@@ -94,7 +99,7 @@ extension ViewController: UICollectionViewDelegate {
 // セルの大きさ
 extension ViewController:  UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        
         let numberOfCell: CGFloat = 3
         let cellWidth = UIScreen.main.bounds.size.width  / numberOfCell - 6
         return CGSize(width: cellWidth, height: 160)
