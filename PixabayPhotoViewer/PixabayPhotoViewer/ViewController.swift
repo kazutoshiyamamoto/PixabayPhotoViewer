@@ -26,6 +26,9 @@ class ViewController: UIViewController {
     private var items: [Item.Hits] = []
     private let preheater = ImagePreheater()
     
+    private var currentPage = 1
+    private var isLoadingList = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.pixabayCollectionView.register(UINib(nibName: "pixabayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "pixabayCollectionViewCell")
@@ -42,25 +45,29 @@ class ViewController: UIViewController {
     }
     
     @objc func refresh(sender: UIRefreshControl) {
+        self.currentPage = 1
+        self.items = []
         self.setUpCollectionItems()
         sender.endRefreshing()
     }
     
     private func setUpCollectionItems() {
-        self.getCollectionItems(completionHandler: { (item) in
-            self.items = item.hits
+        self.getCollectionItems(pageNo: self.currentPage, completionHandler: { (item) in
+            self.currentPage += 1
+            self.items.append(contentsOf: item.hits)
             DispatchQueue.main.async {
+                self.isLoadingList = false
                 self.pixabayCollectionView.reloadData()
             }
         })
     }
     
-    private func getCollectionItems(completionHandler: @escaping (Item) -> ()) {
+    private func getCollectionItems(pageNo: Int, completionHandler: @escaping (Item) -> ()) {
         let configuration = URLSessionConfiguration.default
         
         let url = URL(string: "https://pixabay.com/api/")!
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        components?.queryItems = [URLQueryItem(name: "key", value: "{APIKey}")] + [URLQueryItem(name: "q", value: "sea")] + [URLQueryItem(name: "image_type", value: "photo")]
+        components?.queryItems = [URLQueryItem(name: "key", value: "13068565-c1fdd03743ba0daf1922d861e")] + [URLQueryItem(name: "page", value: "\(pageNo)")] + [URLQueryItem(name: "q", value: "sea")] + [URLQueryItem(name: "image_type", value: "photo")]
         let queryStringAddedUrl = components?.url
         
         if let url = queryStringAddedUrl {
@@ -84,6 +91,15 @@ class ViewController: UIViewController {
     private func getAddConfiguration(url: URL, configuration: URLSessionConfiguration, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
         let session = URLSession(configuration: configuration)
         session.dataTask(with: url, completionHandler: completionHandler).resume()
+    }
+}
+
+extension ViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height) && !self.isLoadingList) {
+            self.isLoadingList = true
+            self.setUpCollectionItems()
+        }
     }
 }
 
@@ -116,10 +132,6 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pixabayCollectionViewCell", for: indexPath) as! pixabayCollectionViewCell
         
-        cell.pixabayImageView.image = nil
-        cell.imageTagLabel.text = nil
-        cell.imageCreatorNameLabel.text = nil
-
         let item = self.items[indexPath.row]
         let previewUrl = URL(string: item.previewURL)!
         Nuke.loadImage(with: previewUrl, into: cell.pixabayImageView)
@@ -135,7 +147,7 @@ extension ViewController: UICollectionViewDataSourcePrefetching {
         let urls = indexPaths.map { URL(string: self.items[$0.row].previewURL) }
         preheater.startPreheating(with: urls as! [URL])
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
         let urls = indexPaths.map { URL(string: self.items[$0.row].previewURL) }
         preheater.stopPreheating(with: urls as! [URL])
