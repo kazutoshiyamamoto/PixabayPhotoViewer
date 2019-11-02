@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var pixabayCollectionView: UICollectionView!
     
-    private var items: Item?
+    private var items: [Item.Hits] = []
     private let preheater = ImagePreheater()
     
     override func viewDidLoad() {
@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     
     private func setUpCollectionItems() {
         self.getCollectionItems(completionHandler: { (item) in
-            self.items = item
+            self.items = item.hits
             DispatchQueue.main.async {
                 self.pixabayCollectionView.reloadData()
             }
@@ -60,7 +60,7 @@ class ViewController: UIViewController {
         
         let url = URL(string: "https://pixabay.com/api/")!
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        components?.queryItems = [URLQueryItem(name: "key", value: "13068565-c1fdd03743ba0daf1922d861e")] + [URLQueryItem(name: "q", value: "sea")] + [URLQueryItem(name: "image_type", value: "photo")]
+        components?.queryItems = [URLQueryItem(name: "key", value: "{APIKey}")] + [URLQueryItem(name: "q", value: "sea")] + [URLQueryItem(name: "image_type", value: "photo")]
         let queryStringAddedUrl = components?.url
         
         if let url = queryStringAddedUrl {
@@ -90,7 +90,7 @@ class ViewController: UIViewController {
 // セル選択時の処理
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let url = URL(string: self.items?.hits[indexPath.row].webformatURL ?? "") {
+        if let url = URL(string: self.items[indexPath.row].webformatURL) {
             UIApplication.shared.open(url)
         }
     }
@@ -109,7 +109,7 @@ extension ViewController:  UICollectionViewDelegateFlowLayout {
 extension ViewController: UICollectionViewDataSource {
     // セルの数
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.items?.hits.count ?? 0
+        return self.items.count
     }
     
     // セルの設定
@@ -119,12 +119,12 @@ extension ViewController: UICollectionViewDataSource {
         cell.pixabayImageView.image = nil
         cell.imageTagLabel.text = nil
         cell.imageCreatorNameLabel.text = nil
-        
-        let item = self.items?.hits[indexPath.row]
-        let previewUrl = URL(string: item?.previewURL ?? "")!
+
+        let item = self.items[indexPath.row]
+        let previewUrl = URL(string: item.previewURL)!
         Nuke.loadImage(with: previewUrl, into: cell.pixabayImageView)
-        cell.imageTagLabel.text = item?.tags
-        cell.imageCreatorNameLabel.text = item?.user
+        cell.imageTagLabel.text = item.tags
+        cell.imageCreatorNameLabel.text = item.user
         
         return cell
     }
@@ -132,17 +132,13 @@ extension ViewController: UICollectionViewDataSource {
 
 extension ViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        let urls = indexPaths.map { URL(string: self.items?.hits[$0.row].previewURL ?? "") }
+        let urls = indexPaths.map { URL(string: self.items[$0.row].previewURL) }
         preheater.startPreheating(with: urls as! [URL])
-        
-        print("prefetchItemsAt: \(indexPaths)")
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-        let urls = indexPaths.map { URL(string: self.items?.hits[$0.row].previewURL ?? "") }
+        let urls = indexPaths.map { URL(string: self.items[$0.row].previewURL) }
         preheater.stopPreheating(with: urls as! [URL])
-        
-        print("cancelPrefetchingForItemsAt: \(indexPaths)")
     }
 }
 
