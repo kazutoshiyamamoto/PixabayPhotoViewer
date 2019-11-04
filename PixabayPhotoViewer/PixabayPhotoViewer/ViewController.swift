@@ -45,6 +45,7 @@ class ViewController: UIViewController {
     }
     
     @objc func refresh(sender: UIRefreshControl) {
+        // ページ番号を元に戻す
         self.pageNo = 1
         self.items = []
         self.setUpPixabayItems()
@@ -90,7 +91,9 @@ class ViewController: UIViewController {
 
 extension ViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height - 800) && !self.isLoadingList) {
+        // isLoadingListがfalseの時だけsetUpPixabayItemsを実行する
+        if (((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height) && !self.isLoadingList) {
+            // setUpPixabayItemsを実行している間に追加でsetUpPixabayItemsを実行しないようにisLoadingListをtrueに変更
             self.isLoadingList = true
             self.setUpPixabayItems()
         }
@@ -139,12 +142,12 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         let urls = indexPaths.map { URL(string: self.items[$0.row].previewURL) }
-        preheater.startPreheating(with: urls as! [URL])
+        self.preheater.startPreheating(with: urls as! [URL])
     }
     
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
         let urls = indexPaths.map { URL(string: self.items[$0.row].previewURL) }
-        preheater.stopPreheating(with: urls as! [URL])
+        self.preheater.stopPreheating(with: urls as! [URL])
     }
 }
 
