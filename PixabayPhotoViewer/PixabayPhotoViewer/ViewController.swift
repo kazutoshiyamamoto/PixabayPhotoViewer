@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     private var items: [Item.Hits] = []
     private let preheater = ImagePreheater()
     
-    private var currentPage = 1
+    private var pageNo = 1
     private var isLoadingList = false
     
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         self.pixabayCollectionView.dataSource = self
         self.pixabayCollectionView.prefetchDataSource = self
         
-        self.setUpCollectionItems()
+        self.setUpPixabayItems()
         
         let refreshControl = UIRefreshControl()
         self.pixabayCollectionView.refreshControl = refreshControl
@@ -45,15 +45,15 @@ class ViewController: UIViewController {
     }
     
     @objc func refresh(sender: UIRefreshControl) {
-        self.currentPage = 1
+        self.pageNo = 1
         self.items = []
-        self.setUpCollectionItems()
+        self.setUpPixabayItems()
         sender.endRefreshing()
     }
     
-    private func setUpCollectionItems() {
-        self.getCollectionItems(pageNo: self.currentPage, completionHandler: { (item) in
-            self.currentPage += 1
+    private func setUpPixabayItems() {
+        self.getPixabayItems(pageNo: self.pageNo, completion: { (item) in
+            self.pageNo += 1
             self.items.append(contentsOf: item.hits)
             DispatchQueue.main.async {
                 self.isLoadingList = false
@@ -62,35 +62,29 @@ class ViewController: UIViewController {
         })
     }
     
-    private func getCollectionItems(pageNo: Int, completionHandler: @escaping (Item) -> ()) {
-        let configuration = URLSessionConfiguration.default
-        
+    private func getPixabayItems(pageNo: Int, completion: @escaping (Item) -> ()) {
         let url = URL(string: "https://pixabay.com/api/")!
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         components?.queryItems = [URLQueryItem(name: "key", value: "{APIKey}")] + [URLQueryItem(name: "page", value: "\(pageNo)")] + [URLQueryItem(name: "per_page", value: "100")] + [URLQueryItem(name: "q", value: "sea")] + [URLQueryItem(name: "image_type", value: "photo")]
         let queryStringAddedUrl = components?.url
         
         if let url = queryStringAddedUrl {
-            self.getAddConfiguration(url: url, configuration: configuration, completionHandler: {(data, response, error) -> Void in
+            let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {
                     
                     do {
                         let decoder = JSONDecoder()
                         let items = try decoder.decode(Item.self, from: data)
-                        completionHandler(items)
+                        completion(items)
                     } catch {
                         print("Serialize Error")
                     }
                 } else {
                     print(error ?? "Error")
                 }
-            })
+            }
+            task.resume()
         }
-    }
-    
-    private func getAddConfiguration(url: URL, configuration: URLSessionConfiguration, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        let session = URLSession(configuration: configuration)
-        session.dataTask(with: url, completionHandler: completionHandler).resume()
     }
 }
 
@@ -98,7 +92,7 @@ extension ViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height - 800) && !self.isLoadingList) {
             self.isLoadingList = true
-            self.setUpCollectionItems()
+            self.setUpPixabayItems()
         }
     }
 }
