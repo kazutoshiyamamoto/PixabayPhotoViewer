@@ -1,5 +1,5 @@
 //
-//  pixabayCollectionViewCell.swift
+//  PixabayCollectionViewCell.swift
 //  PixabayPhotoViewer
 //
 //  Created by home on 2019/07/27.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class pixabayCollectionViewCell: UICollectionViewCell {
+class PixabayCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var pixabayImageView: UIImageView!
     @IBOutlet weak var imageTagLabel: UILabel!

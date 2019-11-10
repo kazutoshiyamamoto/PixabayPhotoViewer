@@ -1,5 +1,5 @@
 //
-//  pixabayCollectionFooterView.swift
+//  PixabayCollectionFooterView.swift
 //  PixabayPhotoViewer
 //
 //  Created by home on 2019/11/10.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class pixabayCollectionFooterView: UICollectionReusableView {
+class PixabayCollectionFooterView: UICollectionReusableView {
 
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
