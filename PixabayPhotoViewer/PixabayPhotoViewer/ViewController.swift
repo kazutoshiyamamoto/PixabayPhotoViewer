@@ -32,6 +32,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.pixabayCollectionView.register(UINib(nibName: "pixabayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "pixabayCollectionViewCell")
+        self.pixabayCollectionView.register(UINib(nibName: "pixabayCollectionFooterView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "pixabayCollectionFooterView")
         
         self.pixabayCollectionView.delegate = self
         self.pixabayCollectionView.dataSource = self
@@ -117,6 +118,10 @@ extension ViewController:  UICollectionViewDelegateFlowLayout {
         let cellWidth = UIScreen.main.bounds.size.width  / numberOfCell - 6
         return CGSize(width: cellWidth, height: 160)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 50)
+    }
 }
 
 extension ViewController: UICollectionViewDataSource {
@@ -136,6 +141,17 @@ extension ViewController: UICollectionViewDataSource {
         cell.imageCreatorNameLabel.text = item.user
         
         return cell
+    }
+    
+    // フッターの設定
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionFooter {
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "pixabayCollectionFooterView", for: indexPath)
+            
+
+            return footerView
+        }
+        return UICollectionReusableView()
     }
 }
 
