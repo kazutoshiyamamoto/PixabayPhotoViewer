@@ -16,11 +16,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Knj-1P-3Ud">
-                    <rect key="frame" x="141.5" y="6.5" width="37" height="37"/>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Knj-1P-3Ud">
+                    <rect key="frame" x="150" y="15" width="20" height="20"/>
                 </activityIndicatorView>
             </subviews>
-            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Knj-1P-3Ud" firstAttribute="centerX" secondItem="U6b-Vx-4bR" secondAttribute="centerX" id="3cr-BN-gaf"/>
                 <constraint firstItem="Knj-1P-3Ud" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="Mg0-DI-uba"/>

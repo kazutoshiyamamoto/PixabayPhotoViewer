@@ -77,7 +77,7 @@ class ViewController: UIViewController {
     private func getPixabayItems(pageNo: Int, completion: @escaping (Item) -> ()) {
         let url = URL(string: "https://pixabay.com/api/")!
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        components?.queryItems = [URLQueryItem(name: "key", value: "{APIKey}")] + [URLQueryItem(name: "page", value: "\(self.pageNo)")] + [URLQueryItem(name: "per_page", value: "60")] + [URLQueryItem(name: "q", value: "sea")] + [URLQueryItem(name: "image_type", value: "photo")]
+        components?.queryItems = [URLQueryItem(name: "key", value: "13068565-c1fdd03743ba0daf1922d861e")] + [URLQueryItem(name: "page", value: "\(self.pageNo)")] + [URLQueryItem(name: "per_page", value: "60")] + [URLQueryItem(name: "q", value: "sea")] + [URLQueryItem(name: "image_type", value: "photo")]
         let queryStringAddedUrl = components?.url
         
         if let url = queryStringAddedUrl {
@@ -148,7 +148,7 @@ extension ViewController:  UICollectionViewDelegateFlowLayout {
     // フッターの高さ
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         if self.items.count > 0 && self.isLastPageReached == false {
-            return CGSize(width: collectionView.frame.width, height: 50)
+            return CGSize(width: collectionView.frame.width, height: 40)
         }
         return .zero
     }
