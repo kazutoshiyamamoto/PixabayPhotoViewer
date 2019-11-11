@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     private let urlString =  "https://pixabay.com/api/"
     private var items: [Item.Hits] = []
     private var pageNo = 1
+    private var perPage = 60
     private var isLoadingList = false
     private var isLastPageReached = false
     
@@ -62,8 +63,8 @@ class ViewController: UIViewController {
             self.pageNo += 1
             self.items.append(contentsOf: item.hits)
             
-            // 返ってきたデータの数が0もしくは3で割り切れない数が返ってきた場合は最後のページにたどり着いたと判定する
-            if item.hits.count == 0 || item.hits.count % 3 != 0 {
+            // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数が返ってきた場合は最後のページにたどり着いたと判定する
+            if item.hits.count == 0 || item.hits.count % self.perPage != 0 {
                 self.isLastPageReached = true
             }
             
@@ -77,7 +78,7 @@ class ViewController: UIViewController {
     private func getPixabayItems(pageNo: Int, completion: @escaping (Item) -> ()) {
         let url = URL(string: "https://pixabay.com/api/")!
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        components?.queryItems = [URLQueryItem(name: "key", value: "13068565-c1fdd03743ba0daf1922d861e")] + [URLQueryItem(name: "page", value: "\(self.pageNo)")] + [URLQueryItem(name: "per_page", value: "60")] + [URLQueryItem(name: "q", value: "sea")] + [URLQueryItem(name: "image_type", value: "photo")]
+        components?.queryItems = [URLQueryItem(name: "key", value: "{APIKey}")] + [URLQueryItem(name: "page", value: "\(self.pageNo)")] + [URLQueryItem(name: "per_page", value: "\(self.perPage)")] + [URLQueryItem(name: "q", value: "sea")] + [URLQueryItem(name: "image_type", value: "photo")]
         let queryStringAddedUrl = components?.url
         
         if let url = queryStringAddedUrl {
@@ -120,8 +121,8 @@ extension ViewController: UICollectionViewDelegate {
                 self.getPixabayItems(pageNo: self.pageNo, completion: { (item) in
                     self.pageNo += 1
                     self.items.append(contentsOf: item.hits)
-                    // 返ってきたデータの数が0もしくは3で割り切れない数が返ってきた場合は最後のページにたどり着いたと判定する
-                    if item.hits.count == 0 || item.hits.count % 3 != 0 {
+                    // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数が返ってきた場合は最後のページにたどり着いたと判定する
+                    if item.hits.count == 0 || item.hits.count % self.perPage != 0 {
                         self.isLastPageReached = true
                     }
                     DispatchQueue.main.async {
