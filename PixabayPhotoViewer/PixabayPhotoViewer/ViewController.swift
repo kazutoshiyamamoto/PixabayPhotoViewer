@@ -23,11 +23,13 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var pixabayCollectionView: UICollectionView!
     
+    private let urlString =  "https://pixabay.com/api/"
     private var items: [Item.Hits] = []
-    private let preheater = ImagePreheater()
-    
     private var pageNo = 1
     private var isLoadingList = false
+    private var isLastPageReached = false
+    
+    private let preheater = ImagePreheater()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,14 +51,22 @@ class ViewController: UIViewController {
         // ページ番号を元に戻す
         self.pageNo = 1
         self.items = []
+        self.isLastPageReached = false
         self.setUpPixabayItems()
         sender.endRefreshing()
     }
     
     private func setUpPixabayItems() {
+        self.isLoadingList = true
         self.getPixabayItems(pageNo: self.pageNo, completion: { (item) in
             self.pageNo += 1
             self.items.append(contentsOf: item.hits)
+            
+            // 返ってきた商品情報の数が0もしくは3で割り切れない数が返ってきた場合は最後のページにたどり着いたと判定する
+            if item.hits.count == 0 || item.hits.count % 3 != 0 {
+                self.isLastPageReached = true
+            }
+            
             DispatchQueue.main.async {
                 self.isLoadingList = false
                 self.pixabayCollectionView.reloadData()
@@ -90,28 +100,44 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // isLoadingListがfalseの時だけsetUpPixabayItemsを実行する
-        if (((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height) && !self.isLoadingList) {
-            // setUpPixabayItemsを実行している間に追加でsetUpPixabayItemsを実行しないようにisLoadingListをtrueに変更
-            self.isLoadingList = true
-            self.setUpPixabayItems()
-        }
-    }
-}
-
-// セル選択時の処理
 extension ViewController: UICollectionViewDelegate {
+    // セル選択時の処理
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let url = URL(string: self.items[indexPath.row].webformatURL) {
             UIApplication.shared.open(url)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        if elementKind == UICollectionView.elementKindSectionFooter {
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: elementKind, withReuseIdentifier: "PixabayCollectionFooterView", for: indexPath) as! PixabayCollectionFooterView
+            
+            if self.isLoadingList == false && self.isLastPageReached == false {
+                footerView.isHidden = false
+                footerView.activityIndicatorView.startAnimating()
+                self.isLoadingList = true
+                
+                self.getPixabayItems(pageNo: self.pageNo, completion: { (item) in
+                    self.pageNo += 1
+                    self.items.append(contentsOf: item.hits)
+                    // 返ってきた商品情報の数が0もしくは3で割り切れない数が返ってきた場合は最後のページにたどり着いたと判定する
+                    if item.hits.count == 0 || item.hits.count % 3 != 0 {
+                        self.isLastPageReached = true
+                    }
+                    DispatchQueue.main.async {
+                        self.isLoadingList = false
+                        footerView.activityIndicatorView.stopAnimating()
+                        footerView.isHidden = true
+                        self.pixabayCollectionView.reloadData()
+                    }
+                })
+            }
+        }
+    }
 }
 
-// セルの大きさ
 extension ViewController:  UICollectionViewDelegateFlowLayout {
+    // セルの大きさ
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let numberOfCell: CGFloat = 3
@@ -119,8 +145,12 @@ extension ViewController:  UICollectionViewDelegateFlowLayout {
         return CGSize(width: cellWidth, height: 160)
     }
     
+    // フッターの高さ
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 50)
+        if self.items.count > 0 && self.isLastPageReached == false {
+            return CGSize(width: collectionView.frame.width, height: 50)
+        }
+        return .zero
     }
 }
 
@@ -146,8 +176,7 @@ extension ViewController: UICollectionViewDataSource {
     // フッターの設定
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionFooter {
-            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "PixabayCollectionFooterView", for: indexPath)
-
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "PixabayCollectionFooterView", for: indexPath) as! PixabayCollectionFooterView
             return footerView
         }
         return UICollectionReusableView()
