@@ -63,8 +63,8 @@ class ViewController: UIViewController {
             self.pageNo += 1
             self.items.append(contentsOf: item.hits)
             
-            // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数が返ってきた場合は最後のページにたどり着いたと判定する
-            if item.hits.count == 0 || item.hits.count % self.perPage != 0 {
+            // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
+            if item.hits.count == 0 || item.hits.count % self.perPage != 0 || self.items.count >= 500 {
                 self.isLastPageReached = true
             }
             
@@ -121,8 +121,8 @@ extension ViewController: UICollectionViewDelegate {
                 self.getPixabayItems(pageNo: self.pageNo, completion: { (item) in
                     self.pageNo += 1
                     self.items.append(contentsOf: item.hits)
-                    // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数が返ってきた場合は最後のページにたどり着いたと判定する
-                    if item.hits.count == 0 || item.hits.count % self.perPage != 0 {
+                    // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
+                    if item.hits.count == 0 || item.hits.count % self.perPage != 0 || self.items.count >= 500 {
                         self.isLastPageReached = true
                     }
                     DispatchQueue.main.async {
@@ -165,11 +165,13 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PixabayCollectionViewCell", for: indexPath) as! PixabayCollectionViewCell
         
-        let item = self.items[indexPath.row]
-        let previewUrl = URL(string: item.previewURL)!
-        Nuke.loadImage(with: previewUrl, into: cell.pixabayImageView)
-        cell.imageTagLabel.text = item.tags
-        cell.imageCreatorNameLabel.text = item.user
+        if collectionView.contentOffset.y >= 0 {
+            let item = self.items[indexPath.row]
+            let previewUrl = URL(string: item.previewURL)!
+            Nuke.loadImage(with: previewUrl, into: cell.pixabayImageView)
+            cell.imageTagLabel.text = item.tags
+            cell.imageCreatorNameLabel.text = item.user
+        }
         
         return cell
     }
@@ -186,13 +188,17 @@ extension ViewController: UICollectionViewDataSource {
 
 extension ViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        let urls = indexPaths.map { URL(string: self.items[$0.row].previewURL) }
-        self.preheater.startPreheating(with: urls as! [URL])
+        if collectionView.contentOffset.y >= 0 {
+            let urls = indexPaths.map { URL(string: self.items[$0.row].previewURL) }
+            self.preheater.startPreheating(with: urls as! [URL])
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-        let urls = indexPaths.map { URL(string: self.items[$0.row].previewURL) }
-        self.preheater.stopPreheating(with: urls as! [URL])
+        if collectionView.contentOffset.y >= 0 {
+            let urls = indexPaths.map { URL(string: self.items[$0.row].previewURL) }
+            self.preheater.stopPreheating(with: urls as! [URL])
+        }
     }
 }
 
