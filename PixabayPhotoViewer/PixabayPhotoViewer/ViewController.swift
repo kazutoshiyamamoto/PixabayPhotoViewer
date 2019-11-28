@@ -142,8 +142,8 @@ extension ViewController:  UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let numberOfCell: CGFloat = 3
-        let cellWidth = UIScreen.main.bounds.size.width  / numberOfCell - 6
-        return CGSize(width: cellWidth, height: 160)
+        let cellWidth = UIScreen.main.bounds.size.width  / numberOfCell - 2.8
+        return CGSize(width: cellWidth, height: cellWidth + 45)
     }
     
     // フッターの高さ
