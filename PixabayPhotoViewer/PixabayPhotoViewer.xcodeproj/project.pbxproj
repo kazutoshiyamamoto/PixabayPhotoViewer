@@ -65,6 +65,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FD45563523BDDD8200C521BC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FD9BD62622EC90AD009C10EC /* Assets.xcassets */,
+				FD9BD62B22EC90AD009C10EC /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		FD9BD61322EC90A9009C10EC = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +95,7 @@
 		FD9BD61E22EC90A9009C10EC /* PixabayPhotoViewer */ = {
 			isa = PBXGroup;
 			children = (
+				FD45563523BDDD8200C521BC /* Resources */,
 				FD9BD61F22EC90A9009C10EC /* AppDelegate.swift */,
 				FD9BD62322EC90A9009C10EC /* Main.storyboard */,
 				FD9BD62122EC90A9009C10EC /* ViewController.swift */,
@@ -93,9 +103,7 @@
 				FD9BD63222EC92D6009C10EC /* PixabayCollectionViewCell.xib */,
 				FD1815C32377E43E00647658 /* PixabayCollectionFooterView.swift */,
 				FD1815C42377E43E00647658 /* PixabayCollectionFooterView.xib */,
-				FD9BD62622EC90AD009C10EC /* Assets.xcassets */,
 				FD9BD62822EC90AD009C10EC /* LaunchScreen.storyboard */,
-				FD9BD62B22EC90AD009C10EC /* Info.plist */,
 			);
 			path = PixabayPhotoViewer;
 			sourceTree = "<group>";
@@ -366,7 +374,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8DJ3WL36QU;
-				INFOPLIST_FILE = PixabayPhotoViewer/Info.plist;
+				INFOPLIST_FILE = PixabayPhotoViewer/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -385,7 +393,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8DJ3WL36QU;
-				INFOPLIST_FILE = PixabayPhotoViewer/Info.plist;
+				INFOPLIST_FILE = PixabayPhotoViewer/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
