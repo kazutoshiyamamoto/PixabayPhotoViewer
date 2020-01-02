@@ -13,7 +13,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var pixabayCollectionView: UICollectionView!
     
-    private let urlString =  "https://pixabay.com/api/"
     private var items: [Item.Hits] = []
     private var pageNo = 1
     private var perPage = 60
