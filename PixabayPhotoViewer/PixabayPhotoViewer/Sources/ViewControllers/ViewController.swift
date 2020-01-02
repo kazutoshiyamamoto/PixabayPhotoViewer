@@ -9,16 +9,6 @@
 import UIKit
 import Nuke
 
-struct Item: Codable {
-    var hits: [Hits]
-    struct Hits: Codable {
-        var previewURL: String
-        var tags: String
-        var user: String
-        var webformatURL: String
-    }
-}
-
 class ViewController: UIViewController {
     
     @IBOutlet weak var pixabayCollectionView: UICollectionView!
@@ -59,7 +49,7 @@ class ViewController: UIViewController {
     
     private func setUpPixabayItems() {
         self.isLoadingList = true
-        self.getPixabayItems(pageNo: self.pageNo, completion: { (item) in
+        PixabayApi().getPixabayItems(pageNo: self.pageNo, perPage: self.perPage, completion: { (item) in
             self.pageNo += 1
             self.items.append(contentsOf: item.hits)
             
@@ -73,31 +63,6 @@ class ViewController: UIViewController {
                 self.pixabayCollectionView.reloadData()
             }
         })
-    }
-    
-    private func getPixabayItems(pageNo: Int, completion: @escaping (Item) -> ()) {
-        let url = URL(string: "https://pixabay.com/api/")!
-        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        components?.queryItems = [URLQueryItem(name: "key", value: "")] + [URLQueryItem(name: "page", value: "\(self.pageNo)")] + [URLQueryItem(name: "per_page", value: "\(self.perPage)")] + [URLQueryItem(name: "q", value: "sea")] + [URLQueryItem(name: "image_type", value: "photo")]
-        let queryStringAddedUrl = components?.url
-        
-        if let url = queryStringAddedUrl {
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-                if let data = data {
-                    
-                    do {
-                        let decoder = JSONDecoder()
-                        let items = try decoder.decode(Item.self, from: data)
-                        completion(items)
-                    } catch {
-                        print("Serialize Error")
-                    }
-                } else {
-                    print(error ?? "Error")
-                }
-            }
-            task.resume()
-        }
     }
 }
 
@@ -118,7 +83,7 @@ extension ViewController: UICollectionViewDelegate {
                 footerView.activityIndicatorView.startAnimating()
                 self.isLoadingList = true
                 
-                self.getPixabayItems(pageNo: self.pageNo, completion: { (item) in
+                PixabayApi().getPixabayItems(pageNo: self.pageNo, perPage: self.perPage, completion: { (item) in
                     self.pageNo += 1
                     self.items.append(contentsOf: item.hits)
                     // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
@@ -188,14 +153,14 @@ extension ViewController: UICollectionViewDataSource {
 
 extension ViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        if collectionView.contentOffset.y >= 0 {
+        if self.items.count > 0 && collectionView.contentOffset.y > 0 {
             let urls = indexPaths.map { URL(string: self.items[$0.row].previewURL) }
             self.preheater.startPreheating(with: urls as! [URL])
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-        if collectionView.contentOffset.y >= 0 {
+        if self.items.count > 0 && collectionView.contentOffset.y > 0 {
             let urls = indexPaths.map { URL(string: self.items[$0.row].previewURL) }
             self.preheater.stopPreheating(with: urls as! [URL])
         }
