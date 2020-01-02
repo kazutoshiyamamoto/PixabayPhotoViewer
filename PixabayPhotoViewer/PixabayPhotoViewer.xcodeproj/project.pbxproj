@@ -77,10 +77,10 @@
 		FD45563623BDE1C900C521BC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FD9BD62822EC90AD009C10EC /* LaunchScreen.storyboard */,
-				FD9BD62322EC90A9009C10EC /* Main.storyboard */,
 				FD45563723BDE21E00C521BC /* Cells */,
 				FD45563823BDE22E00C521BC /* Footers */,
+				FD9BD62822EC90AD009C10EC /* LaunchScreen.storyboard */,
+				FD9BD62322EC90A9009C10EC /* Main.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -101,6 +101,24 @@
 				FD1815C32377E43E00647658 /* PixabayCollectionFooterView.swift */,
 			);
 			path = Footers;
+			sourceTree = "<group>";
+		};
+		FD45563A23BDE40200C521BC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FD9BD62122EC90A9009C10EC /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FD45563B23BDE44000C521BC /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				FD9BD61F22EC90A9009C10EC /* AppDelegate.swift */,
+				FD45563623BDE1C900C521BC /* Views */,
+				FD45563A23BDE40200C521BC /* ViewControllers */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		FD9BD61322EC90A9009C10EC = {
@@ -124,10 +142,8 @@
 		FD9BD61E22EC90A9009C10EC /* PixabayPhotoViewer */ = {
 			isa = PBXGroup;
 			children = (
-				FD9BD61F22EC90A9009C10EC /* AppDelegate.swift */,
 				FD45563523BDDD8200C521BC /* Resources */,
-				FD45563623BDE1C900C521BC /* Views */,
-				FD9BD62122EC90A9009C10EC /* ViewController.swift */,
+				FD45563B23BDE44000C521BC /* Sources */,
 			);
 			path = PixabayPhotoViewer;
 			sourceTree = "<group>";
