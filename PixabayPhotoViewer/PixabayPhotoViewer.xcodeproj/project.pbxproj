@@ -440,6 +440,7 @@
 			baseConfigurationReference = 506307E92E160455F1FC2146 /* Pods-PixabayPhotoViewer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8DJ3WL36QU;
 				INFOPLIST_FILE = PixabayPhotoViewer/Resources/Info.plist;
@@ -447,8 +448,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Swift.PixabayPhotoViewer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.work.PixabayPhotoViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -459,6 +461,7 @@
 			baseConfigurationReference = 4CDBBBECBDB61A6ED601DC47 /* Pods-PixabayPhotoViewer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8DJ3WL36QU;
 				INFOPLIST_FILE = PixabayPhotoViewer/Resources/Info.plist;
@@ -466,8 +469,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Swift.PixabayPhotoViewer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.work.PixabayPhotoViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
