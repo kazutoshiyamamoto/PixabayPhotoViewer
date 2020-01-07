@@ -31,5 +31,10 @@ platform :ios do
         uploadBitcode: false
       }
     )
+
+    slack(
+      message: "ビルドテスト"
+      slack_url: "https://hooks.slack.com/services/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"
+    )
   end
 end
