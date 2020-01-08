@@ -33,7 +33,7 @@ platform :ios do
 
     slack(
       message: "ビルドテスト完了",
-      slack_url: "https://hooks.slack.com/services/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"
+      slack_url: "https://hooks.slack.com/services/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"
     )
   end
 end
