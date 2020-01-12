@@ -8,16 +8,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Top View Controller-->
+        <!--Pixabay-->
         <scene sceneID="zsV-ci-ITc">
             <objects>
-                <viewController id="gFj-ev-Wo9" customClass="TopViewController" customModule="PixabayPhotoViewer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Top" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gFj-ev-Wo9" customClass="TopViewController" customModule="PixabayPhotoViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZjS-wF-HQZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="E3R-32-kYV">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="0.0" id="fK4-8k-kcM">
                                     <size key="itemSize" width="0.0" height="0.0"/>
@@ -37,7 +37,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wbz-ug-o3E"/>
                     </view>
-                    <navigationItem key="navigationItem" id="oCU-Ob-n41"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="Hjq-9B-lYi"/>
+                    <navigationItem key="navigationItem" title="Pixabay" id="oCU-Ob-n41"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="pixabayCollectionView" destination="E3R-32-kYV" id="ExL-jT-tVj"/>
                     </connections>
@@ -66,4 +68,7 @@
             <point key="canvasLocation" x="1957.9710144927537" y="113.83928571428571"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="house" catalog="system" width="64" height="54"/>
+    </resources>
 </document>
