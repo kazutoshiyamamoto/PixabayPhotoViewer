@@ -9,7 +9,7 @@
 import UIKit
 import Nuke
 
-class ViewController: UIViewController {
+class TopViewController: UIViewController {
     
     @IBOutlet weak var pixabayCollectionView: UICollectionView!
     

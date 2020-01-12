@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VAN-TZ-7LK">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,16 +8,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Top View Controller-->
         <scene sceneID="zsV-ci-ITc">
             <objects>
-                <viewController id="gFj-ev-Wo9" customClass="ViewController" customModule="PixabayPhotoViewer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gFj-ev-Wo9" customClass="TopViewController" customModule="PixabayPhotoViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZjS-wF-HQZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="E3R-32-kYV">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="0.0" id="fK4-8k-kcM">
                                     <size key="itemSize" width="0.0" height="0.0"/>
@@ -37,13 +37,31 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wbz-ug-o3E"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="cCY-uo-0Qf"/>
                     <navigationItem key="navigationItem" id="oCU-Ob-n41"/>
                     <connections>
                         <outlet property="pixabayCollectionView" destination="E3R-32-kYV" id="ExL-jT-tVj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fjv-AT-OgI" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2868.115942028986" y="113.83928571428571"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="UEP-kL-Cyg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VAN-TZ-7LK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="cCY-uo-0Qf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="D15-r2-bxb">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gFj-ev-Wo9" kind="relationship" relationship="rootViewController" id="HWh-jr-bSX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XnA-nY-hmc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="113.83928571428571"/>
         </scene>
