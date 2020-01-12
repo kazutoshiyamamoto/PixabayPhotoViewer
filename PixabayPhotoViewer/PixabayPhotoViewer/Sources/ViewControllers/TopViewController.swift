@@ -34,7 +34,7 @@ class TopViewController: UIViewController {
         
         let refreshControl = UIRefreshControl()
         self.pixabayCollectionView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(ViewController.refresh(sender:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(TopViewController.refresh(sender:)), for: .valueChanged)
     }
     
     @objc func refresh(sender: UIRefreshControl) {
@@ -65,7 +65,7 @@ class TopViewController: UIViewController {
     }
 }
 
-extension ViewController: UICollectionViewDelegate {
+extension TopViewController: UICollectionViewDelegate {
     // セル選択時の処理
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let url = URL(string: self.items[indexPath.row].webformatURL) {
@@ -101,7 +101,7 @@ extension ViewController: UICollectionViewDelegate {
     }
 }
 
-extension ViewController:  UICollectionViewDelegateFlowLayout {
+extension TopViewController:  UICollectionViewDelegateFlowLayout {
     // セルの大きさ
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -119,7 +119,7 @@ extension ViewController:  UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension ViewController: UICollectionViewDataSource {
+extension TopViewController: UICollectionViewDataSource {
     // セルの数
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.items.count
@@ -150,7 +150,7 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
-extension ViewController: UICollectionViewDataSourcePrefetching {
+extension TopViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         if self.items.count > 0 && collectionView.contentOffset.y > 0 {
             let urls = indexPaths.map { URL(string: self.items[$0.row].previewURL) }
