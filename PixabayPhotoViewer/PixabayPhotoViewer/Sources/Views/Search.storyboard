@@ -18,10 +18,29 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="b8L-V5-5qZ"/>
                     </view>
+                    <navigationItem key="navigationItem" id="UDi-Rm-Hsg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oJ9-s8-zIU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="122" y="99"/>
+            <point key="canvasLocation" x="1031.8840579710145" y="98.4375"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vcc-Y4-osG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8qz-GK-vsb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QWL-3r-vnf">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gKz-eE-YSU" kind="relationship" relationship="rootViewController" id="eTr-KJ-Gq1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wuR-lm-el3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="121.73913043478262" y="98.4375"/>
         </scene>
     </scenes>
 </document>
