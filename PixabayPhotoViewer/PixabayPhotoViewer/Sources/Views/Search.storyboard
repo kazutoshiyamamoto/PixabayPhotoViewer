@@ -33,6 +33,9 @@
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="d1C-qX-Xoo"/>
                     <navigationItem key="navigationItem" id="UDi-Rm-Hsg"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchMenuView" destination="a2D-JU-VIp" id="rYQ-5T-8PU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oJ9-s8-zIU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
