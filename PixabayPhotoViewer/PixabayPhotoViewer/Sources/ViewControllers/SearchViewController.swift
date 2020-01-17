@@ -32,3 +32,9 @@ extension SearchViewController: UITableViewDataSource {
         return cell
     }
 }
+
+extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.searchMenuView.deselectRow(at: indexPath, animated: true)
+    }
+}
