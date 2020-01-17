@@ -12,6 +12,8 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchMenuView: UITableView!
     
+    private let searchMenuTitle = ["カテゴリから探す"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
