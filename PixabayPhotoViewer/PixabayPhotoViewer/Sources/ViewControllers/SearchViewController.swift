@@ -18,6 +18,8 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         
         self.searchMenuView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
+        
+        self.searchMenuView.tableFooterView = UIView()
     }
 }
 
