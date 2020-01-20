@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchMenuViewController: UIViewController {
     
     @IBOutlet weak var searchMenuView: UITableView!
     
@@ -23,7 +23,7 @@ class SearchViewController: UIViewController {
     }
 }
 
-extension SearchViewController: UITableViewDataSource {
+extension SearchMenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.searchMenuTitle.count
     }
@@ -35,7 +35,7 @@ extension SearchViewController: UITableViewDataSource {
     }
 }
 
-extension SearchViewController: UITableViewDelegate {
+extension SearchMenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.searchMenuView.deselectRow(at: indexPath, animated: true)
     }
