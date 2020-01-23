@@ -34,6 +34,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HR6-q9-5Sa"/>
                     </view>
+                    <connections>
+                        <outlet property="categoryMenuView" destination="pL2-aF-3CH" id="c5V-zQ-77N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ed-vs-jLC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

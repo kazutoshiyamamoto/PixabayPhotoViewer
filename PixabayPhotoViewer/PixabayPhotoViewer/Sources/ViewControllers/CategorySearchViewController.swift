@@ -10,9 +10,11 @@ import UIKit
 
 class CategorySearchViewController: UIViewController {
 
+    @IBOutlet weak var categoryMenuView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
