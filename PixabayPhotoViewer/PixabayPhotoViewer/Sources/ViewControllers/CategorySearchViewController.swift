@@ -20,3 +20,9 @@ class CategorySearchViewController: UIViewController {
         self.categoryMenuView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
     }
 }
+
+extension CategorySearchViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.categoryMenuTitle.count
+    }
+}
