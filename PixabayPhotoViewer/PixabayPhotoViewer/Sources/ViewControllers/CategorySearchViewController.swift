@@ -12,21 +12,11 @@ class CategorySearchViewController: UIViewController {
     
     @IBOutlet weak var categoryMenuView: UITableView!
     
+    private let categoryMenuTitle = ["ファッション", "自然", "背景", "科学", "教育", "人々", "感情", "宗教", "健康", "場所", "動物", "産業", "食品", "コンピューター", "スポーツ", "交通", "旅行", "建物", "ビジネス", "音楽"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.categoryMenuView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
