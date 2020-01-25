@@ -32,3 +32,9 @@ extension CategorySearchViewController: UITableViewDataSource {
         return cell
     }
 }
+
+extension CategorySearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.categoryMenuView.deselectRow(at: indexPath, animated: true)
+    }
+}
