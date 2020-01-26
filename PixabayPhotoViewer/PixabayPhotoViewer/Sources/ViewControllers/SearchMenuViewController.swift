@@ -38,5 +38,10 @@ extension SearchMenuViewController: UITableViewDataSource {
 extension SearchMenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.searchMenuView.deselectRow(at: indexPath, animated: true)
+        
+        // カテゴリ検索画面へ遷移
+        let storyboard: UIStoryboard = UIStoryboard(name: "CategorySearch", bundle: nil)
+        let categorySearch = storyboard.instantiateViewController(withIdentifier: "CategorySearch")
+        self.navigationController?.pushViewController(categorySearch, animated: true)
     }
 }
