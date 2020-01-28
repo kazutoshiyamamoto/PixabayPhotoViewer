@@ -12,7 +12,7 @@ class CategorySearchViewController: UIViewController {
     
     @IBOutlet weak var categoryMenuView: UITableView!
     
-    private let categoryMenuTitle = ["ファッション", "自然", "背景", "科学", "教育", "人々", "感情", "宗教", "健康", "場所", "動物", "産業", "食品", "コンピューター", "スポーツ", "交通", "旅行", "建物", "ビジネス", "音楽"]
+    private let categoryMenuTitle = ["ファッション", "自然", "背景", "人", "場所", "動物", "食べ物", "スポーツ", "乗り物", "旅行", "建物", "音楽"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
