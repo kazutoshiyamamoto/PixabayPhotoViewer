@@ -27,6 +27,7 @@
 		FD9BD63322EC92D6009C10EC /* PixabayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9BD63122EC92D6009C10EC /* PixabayCollectionViewCell.swift */; };
 		FD9BD63422EC92D6009C10EC /* PixabayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD9BD63222EC92D6009C10EC /* PixabayCollectionViewCell.xib */; };
 		FDDBCB3723E1C50900BBB3A7 /* SearchResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDDBCB3623E1C50900BBB3A7 /* SearchResult.storyboard */; };
+		FDDBCB3923E1C5A700BBB3A7 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDBCB3823E1C5A700BBB3A7 /* SearchResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		FD9BD63122EC92D6009C10EC /* PixabayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixabayCollectionViewCell.swift; sourceTree = "<group>"; };
 		FD9BD63222EC92D6009C10EC /* PixabayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PixabayCollectionViewCell.xib; sourceTree = "<group>"; };
 		FDDBCB3623E1C50900BBB3A7 /* SearchResult.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResult.storyboard; sourceTree = "<group>"; };
+		FDDBCB3823E1C5A700BBB3A7 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				FD9BD62122EC90A9009C10EC /* TopViewController.swift */,
 				FD78AA6423CF55E000149281 /* SearchMenuViewController.swift */,
 				FD78AA6C23D8827B00149281 /* CategorySearchViewController.swift */,
+				FDDBCB3823E1C5A700BBB3A7 /* SearchResultViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 			files = (
 				FD1815C52377E43E00647658 /* PixabayCollectionFooterView.swift in Sources */,
 				FD78AA6823D0A82400149281 /* TableViewCell.swift in Sources */,
+				FDDBCB3923E1C5A700BBB3A7 /* SearchResultViewController.swift in Sources */,
 				FD78AA6523CF55E000149281 /* SearchMenuViewController.swift in Sources */,
 				FD45564223BDE58700C521BC /* PixabayApi.swift in Sources */,
 				FD9BD63322EC92D6009C10EC /* PixabayCollectionViewCell.swift in Sources */,
