@@ -26,6 +26,7 @@
 		FD9BD62A22EC90AD009C10EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD9BD62822EC90AD009C10EC /* LaunchScreen.storyboard */; };
 		FD9BD63322EC92D6009C10EC /* PixabayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9BD63122EC92D6009C10EC /* PixabayCollectionViewCell.swift */; };
 		FD9BD63422EC92D6009C10EC /* PixabayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD9BD63222EC92D6009C10EC /* PixabayCollectionViewCell.xib */; };
+		FDDBCB3723E1C50900BBB3A7 /* SearchResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDDBCB3623E1C50900BBB3A7 /* SearchResult.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		FD9BD62B22EC90AD009C10EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD9BD63122EC92D6009C10EC /* PixabayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixabayCollectionViewCell.swift; sourceTree = "<group>"; };
 		FD9BD63222EC92D6009C10EC /* PixabayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PixabayCollectionViewCell.xib; sourceTree = "<group>"; };
+		FDDBCB3623E1C50900BBB3A7 /* SearchResult.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResult.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				FD3916F823CB687300F72093 /* Top.storyboard */,
 				FD78AA6223CDFA9000149281 /* SearchMenu.storyboard */,
 				FD78AA6A23D5E46900149281 /* CategorySearch.storyboard */,
+				FDDBCB3623E1C50900BBB3A7 /* SearchResult.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				FD3916F923CB687300F72093 /* Top.storyboard in Resources */,
 				FD78AA6B23D5E46900149281 /* CategorySearch.storyboard in Resources */,
 				FD9BD62522EC90A9009C10EC /* Main.storyboard in Resources */,
+				FDDBCB3723E1C50900BBB3A7 /* SearchResult.storyboard in Resources */,
 				FD78AA6323CDFA9000149281 /* SearchMenu.storyboard in Resources */,
 				FD78AA6923D0A82400149281 /* TableViewCell.xib in Resources */,
 				FD1815C62377E43E00647658 /* PixabayCollectionFooterView.xib in Resources */,
