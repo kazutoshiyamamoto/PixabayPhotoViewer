@@ -37,6 +37,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="er5-KV-WMp"/>
                     </view>
+                    <connections>
+                        <outlet property="searchResultView" destination="GjL-sg-IMU" id="bHN-fv-yPp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JZG-k8-iEt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
