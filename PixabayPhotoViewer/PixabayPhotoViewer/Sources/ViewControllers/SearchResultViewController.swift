@@ -12,9 +12,11 @@ class SearchResultViewController: UIViewController {
     
     @IBOutlet weak var searchResultView: UICollectionView!
     
+    private var searchResultItems: [Item.Hits] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.searchResultView.register(UINib(nibName: "PixabayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PixabayCollectionViewCell")
-        self.pixabayCollectionView.register(UINib(nibName: "PixabayCollectionFooterView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "PixabayCollectionFooterView")
+        self.searchResultView.register(UINib(nibName: "PixabayCollectionFooterView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "PixabayCollectionFooterView")
     }
 }

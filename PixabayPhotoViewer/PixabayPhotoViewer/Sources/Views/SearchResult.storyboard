@@ -29,6 +29,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="Wo3-ia-vDw" id="Jo3-lW-nMt"/>
                                     <outlet property="delegate" destination="Wo3-ia-vDw" id="uPa-fN-MQk"/>
+                                    <outlet property="prefetchDataSource" destination="Wo3-ia-vDw" id="TBC-Yl-GLd"/>
                                 </connections>
                             </collectionView>
                         </subviews>
