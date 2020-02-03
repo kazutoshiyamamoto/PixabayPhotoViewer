@@ -48,7 +48,7 @@ class TopViewController: UIViewController {
     
     private func setUpPixabayItems() {
         self.isLoadingList = true
-        PixabayApi().getPixabayItems(pageNo: self.pageNo, perPage: self.perPage, completion: { (item) in
+        PixabayApi().fetchPixabayItems(pageNo: self.pageNo, perPage: self.perPage, completion: { (item) in
             self.pageNo += 1
             self.items.append(contentsOf: item.hits)
             
