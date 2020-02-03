@@ -26,6 +26,10 @@
                                     <inset key="sectionInset" minX="2" minY="2" maxX="2" maxY="2"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Wo3-ia-vDw" id="Jo3-lW-nMt"/>
+                                    <outlet property="delegate" destination="Wo3-ia-vDw" id="uPa-fN-MQk"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
