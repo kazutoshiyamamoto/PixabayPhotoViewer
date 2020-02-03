@@ -53,3 +53,12 @@ extension SearchResultViewController: UICollectionViewDataSource {
         return UICollectionReusableView()
     }
 }
+
+extension SearchResultViewController: UICollectionViewDelegate {
+    // セル選択時の処理
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let url = URL(string: self.searchResultItems[indexPath.row].webformatURL) {
+            UIApplication.shared.open(url)
+        }
+    }
+}
