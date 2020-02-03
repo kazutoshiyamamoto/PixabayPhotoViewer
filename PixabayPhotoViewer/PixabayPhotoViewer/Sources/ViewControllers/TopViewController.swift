@@ -130,7 +130,7 @@ extension TopViewController: UICollectionViewDelegate {
                 footerView.activityIndicatorView.startAnimating()
                 self.isLoadingList = true
                 
-                PixabayApi().getPixabayItems(pageNo: self.pageNo, perPage: self.perPage, completion: { (item) in
+                PixabayApi().fetchPixabayItems(pageNo: self.pageNo, perPage: self.perPage, completion: { (item) in
                     self.pageNo += 1
                     self.items.append(contentsOf: item.hits)
                     // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
