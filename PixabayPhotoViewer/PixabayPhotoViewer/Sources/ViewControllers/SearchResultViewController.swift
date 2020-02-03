@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Nuke
 
 class SearchResultViewController: UIViewController {
     
@@ -18,5 +19,22 @@ class SearchResultViewController: UIViewController {
         super.viewDidLoad()
         self.searchResultView.register(UINib(nibName: "PixabayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PixabayCollectionViewCell")
         self.searchResultView.register(UINib(nibName: "PixabayCollectionFooterView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "PixabayCollectionFooterView")
+    }
+}
+
+extension SearchResultViewController: UICollectionViewDataSource {
+    // セルの設定
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PixabayCollectionViewCell", for: indexPath) as! PixabayCollectionViewCell
+        
+        if collectionView.contentOffset.y >= 0 {
+            let item = self.searchResultItems[indexPath.row]
+            let previewUrl = URL(string: item.previewURL)!
+            Nuke.loadImage(with: previewUrl, into: cell.pixabayImageView)
+            cell.imageTagLabel.text = item.tags
+            cell.imageCreatorNameLabel.text = item.user
+        }
+        
+        return cell
     }
 }
