@@ -65,60 +65,6 @@ class TopViewController: UIViewController {
     }
 }
 
-extension TopViewController: UICollectionViewDelegate {
-    // セル選択時の処理
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let url = URL(string: self.items[indexPath.row].webformatURL) {
-            UIApplication.shared.open(url)
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
-        if elementKind == UICollectionView.elementKindSectionFooter {
-            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: elementKind, withReuseIdentifier: "PixabayCollectionFooterView", for: indexPath) as! PixabayCollectionFooterView
-            
-            if self.isLoadingList == false && self.isLastPageReached == false {
-                footerView.isHidden = false
-                footerView.activityIndicatorView.startAnimating()
-                self.isLoadingList = true
-                
-                PixabayApi().getPixabayItems(pageNo: self.pageNo, perPage: self.perPage, completion: { (item) in
-                    self.pageNo += 1
-                    self.items.append(contentsOf: item.hits)
-                    // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
-                    if item.hits.count == 0 || item.hits.count % self.perPage != 0 || self.items.count >= 500 {
-                        self.isLastPageReached = true
-                    }
-                    DispatchQueue.main.async {
-                        self.isLoadingList = false
-                        footerView.activityIndicatorView.stopAnimating()
-                        footerView.isHidden = true
-                        self.pixabayCollectionView.reloadData()
-                    }
-                })
-            }
-        }
-    }
-}
-
-extension TopViewController:  UICollectionViewDelegateFlowLayout {
-    // セルの大きさ
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let numberOfCell: CGFloat = 3
-        let cellWidth = UIScreen.main.bounds.size.width  / numberOfCell - 2.8
-        return CGSize(width: cellWidth, height: cellWidth + 45)
-    }
-    
-    // フッターの高さ
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        if self.items.count > 0 && self.isLastPageReached == false {
-            return CGSize(width: collectionView.frame.width, height: 40)
-        }
-        return .zero
-    }
-}
-
 extension TopViewController: UICollectionViewDataSource {
     // セルの数
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -167,4 +113,56 @@ extension TopViewController: UICollectionViewDataSourcePrefetching {
     }
 }
 
+extension TopViewController: UICollectionViewDelegate {
+    // セル選択時の処理
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let url = URL(string: self.items[indexPath.row].webformatURL) {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        if elementKind == UICollectionView.elementKindSectionFooter {
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: elementKind, withReuseIdentifier: "PixabayCollectionFooterView", for: indexPath) as! PixabayCollectionFooterView
+            
+            if self.isLoadingList == false && self.isLastPageReached == false {
+                footerView.isHidden = false
+                footerView.activityIndicatorView.startAnimating()
+                self.isLoadingList = true
+                
+                PixabayApi().getPixabayItems(pageNo: self.pageNo, perPage: self.perPage, completion: { (item) in
+                    self.pageNo += 1
+                    self.items.append(contentsOf: item.hits)
+                    // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
+                    if item.hits.count == 0 || item.hits.count % self.perPage != 0 || self.items.count >= 500 {
+                        self.isLastPageReached = true
+                    }
+                    DispatchQueue.main.async {
+                        self.isLoadingList = false
+                        footerView.activityIndicatorView.stopAnimating()
+                        footerView.isHidden = true
+                        self.pixabayCollectionView.reloadData()
+                    }
+                })
+            }
+        }
+    }
+}
 
+extension TopViewController: UICollectionViewDelegateFlowLayout {
+    // セルの大きさ
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let numberOfCell: CGFloat = 3
+        let cellWidth = UIScreen.main.bounds.size.width  / numberOfCell - 2.8
+        return CGSize(width: cellWidth, height: cellWidth + 45)
+    }
+    
+    // フッターの高さ
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if self.items.count > 0 && self.isLastPageReached == false {
+            return CGSize(width: collectionView.frame.width, height: 40)
+        }
+        return .zero
+    }
+}
