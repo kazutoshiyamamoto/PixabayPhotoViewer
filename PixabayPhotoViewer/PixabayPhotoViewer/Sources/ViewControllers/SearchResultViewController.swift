@@ -16,6 +16,8 @@ class SearchResultViewController: UIViewController {
     private var searchResultItems: [Item.Hits] = []
     private var pageNo = 1
     private var perPage = 60
+    private var isLoadingList = false
+    private var isLastPageReached = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
