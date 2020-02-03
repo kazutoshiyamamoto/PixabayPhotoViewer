@@ -116,6 +116,34 @@ extension SearchResultViewController: UICollectionViewDelegate {
             UIApplication.shared.open(url)
         }
     }
+    
+    // フッターが表示されそうになるタイミングで呼ばれる
+    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        if elementKind == UICollectionView.elementKindSectionFooter {
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: elementKind, withReuseIdentifier: "PixabayCollectionFooterView", for: indexPath) as! PixabayCollectionFooterView
+            
+            if self.isLoadingList == false && self.isLastPageReached == false {
+                footerView.isHidden = false
+                footerView.activityIndicatorView.startAnimating()
+                self.isLoadingList = true
+                
+                PixabayApi().fetchPixabayItems(pageNo: self.pageNo, perPage: self.perPage, completion: { (searchResultItems) in
+                    self.pageNo += 1
+                    self.searchResultItems.append(contentsOf: searchResultItems.hits)
+                    // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
+                    if searchResultItems.hits.count == 0 || searchResultItems.hits.count % self.perPage != 0 || self.searchResultItems.count >= 500 {
+                        self.isLastPageReached = true
+                    }
+                    DispatchQueue.main.async {
+                        self.isLoadingList = false
+                        footerView.activityIndicatorView.stopAnimating()
+                        footerView.isHidden = true
+                        self.searchResultView.reloadData()
+                    }
+                })
+            }
+        }
+    }
 }
 
 extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
