@@ -19,6 +19,8 @@ class SearchResultViewController: UIViewController {
     private var isLoadingList = false
     private var isLastPageReached = false
     
+    private let preheater = ImagePreheater()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.searchResultView.register(UINib(nibName: "PixabayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PixabayCollectionViewCell")
@@ -75,6 +77,22 @@ extension SearchResultViewController: UICollectionViewDataSource {
         }
         
         return UICollectionReusableView()
+    }
+}
+
+extension SearchResultViewController: UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        if self.searchResultItems.count > 0 && collectionView.contentOffset.y > 0 {
+            let urls = indexPaths.map { URL(string: self.searchResultItems[$0.row].previewURL) }
+            self.preheater.startPreheating(with: urls as! [URL])
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        if self.searchResultItems.count > 0 && collectionView.contentOffset.y > 0 {
+            let urls = indexPaths.map { URL(string: self.searchResultItems[$0.row].previewURL) }
+            self.preheater.stopPreheating(with: urls as! [URL])
+        }
     }
 }
 
