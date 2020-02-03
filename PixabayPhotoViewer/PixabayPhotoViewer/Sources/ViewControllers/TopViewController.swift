@@ -150,7 +150,7 @@ extension TopViewController: UICollectionViewDelegate {
 }
 
 extension TopViewController: UICollectionViewDelegateFlowLayout {
-    // セルの大きさ
+    // セルのサイズ
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let numberOfCell: CGFloat = 3
@@ -158,7 +158,7 @@ extension TopViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: cellWidth, height: cellWidth + 45)
     }
     
-    // フッターの高さ
+    // フッターのサイズ
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         if self.items.count > 0 && self.isLastPageReached == false {
             return CGSize(width: collectionView.frame.width, height: 40)

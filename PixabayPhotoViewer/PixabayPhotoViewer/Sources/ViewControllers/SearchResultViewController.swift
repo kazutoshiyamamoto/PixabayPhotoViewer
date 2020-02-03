@@ -14,6 +14,8 @@ class SearchResultViewController: UIViewController {
     @IBOutlet weak var searchResultView: UICollectionView!
     
     private var searchResultItems: [Item.Hits] = []
+    private var pageNo = 1
+    private var perPage = 60
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +66,7 @@ extension SearchResultViewController: UICollectionViewDelegate {
 }
 
 extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
-    // セルの大きさ
+    // セルのサイズ
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let numberOfCell: CGFloat = 3
