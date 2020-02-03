@@ -23,6 +23,11 @@ class SearchResultViewController: UIViewController {
 }
 
 extension SearchResultViewController: UICollectionViewDataSource {
+    // セルの数
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.searchResultItems.count
+    }
+    
     // セルの設定
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PixabayCollectionViewCell", for: indexPath) as! PixabayCollectionViewCell
