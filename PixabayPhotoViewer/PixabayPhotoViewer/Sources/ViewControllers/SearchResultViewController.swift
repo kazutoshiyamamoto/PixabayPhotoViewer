@@ -42,4 +42,14 @@ extension SearchResultViewController: UICollectionViewDataSource {
         
         return cell
     }
+    
+    // フッターの設定
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionFooter {
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "PixabayCollectionFooterView", for: indexPath) as! PixabayCollectionFooterView
+            return footerView
+        }
+        
+        return UICollectionReusableView()
+    }
 }

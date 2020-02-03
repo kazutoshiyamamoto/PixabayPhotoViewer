@@ -146,6 +146,7 @@ extension TopViewController: UICollectionViewDataSource {
             let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "PixabayCollectionFooterView", for: indexPath) as! PixabayCollectionFooterView
             return footerView
         }
+        
         return UICollectionReusableView()
     }
 }
