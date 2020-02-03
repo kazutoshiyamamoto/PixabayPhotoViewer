@@ -9,11 +9,13 @@
 import UIKit
 
 class SearchResultViewController: UIViewController {
-
+    
     @IBOutlet weak var searchResultView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.searchResultView.register(UINib(nibName: "PixabayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PixabayCollectionViewCell")
+        
+        
     }
 }
