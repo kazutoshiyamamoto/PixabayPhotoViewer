@@ -27,6 +27,10 @@ class SearchResultViewController: UIViewController {
         self.searchResultView.register(UINib(nibName: "PixabayCollectionFooterView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "PixabayCollectionFooterView")
         
         self.displaySearchResultItems()
+        
+        let refreshControl = UIRefreshControl()
+        self.searchResultView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(SearchResultViewController.refresh(sender:)), for: .valueChanged)
     }
     
     private func displaySearchResultItems() {
@@ -45,6 +49,15 @@ class SearchResultViewController: UIViewController {
                 self.searchResultView.reloadData()
             }
         })
+    }
+    
+    @objc func refresh(sender: UIRefreshControl) {
+        // ページ番号を元に戻す
+        self.pageNo = 1
+        self.searchResultItems = []
+        self.isLastPageReached = false
+        self.displaySearchResultItems()
+        sender.endRefreshing()
     }
 }
 
