@@ -75,4 +75,12 @@ extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
         let cellWidth = UIScreen.main.bounds.size.width  / numberOfCell - 2.8
         return CGSize(width: cellWidth, height: cellWidth + 45)
     }
+    
+    // フッターのサイズ
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if self.searchResultItems.count > 0 && self.isLastPageReached == false {
+            return CGSize(width: collectionView.frame.width, height: 40)
+        }
+        return .zero
+    }
 }
