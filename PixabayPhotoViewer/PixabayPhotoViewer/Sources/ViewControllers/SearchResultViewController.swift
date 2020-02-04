@@ -13,13 +13,16 @@ class SearchResultViewController: UIViewController {
     
     @IBOutlet weak var searchResultView: UICollectionView!
     
+    private let preheater = ImagePreheater()
+    
     private var searchResultItems: [Item.Hits] = []
     private var pageNo = 1
     private var perPage = 60
     private var isLoadingList = false
     private var isLastPageReached = false
     
-    private let preheater = ImagePreheater()
+    // 検索対象のカテゴリ
+    var searchCategory = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
