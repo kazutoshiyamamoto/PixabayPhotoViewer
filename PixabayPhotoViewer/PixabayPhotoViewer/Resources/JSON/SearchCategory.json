@@ -1,0 +1,50 @@
+[
+    {
+        "categoryName": "ファッション",
+        "parameterName": "fashion"
+    },
+    {
+        "categoryName": "自然",
+        "parameterName": "nature"
+    },
+    {
+        "categoryName": "背景",
+        "parameterName": "backgrounds"
+    },
+    {
+        "categoryName": "人",
+        "parameterName": "people"
+    },
+    {
+        "categoryName": "場所",
+        "parameterName": "places"
+    },
+    {
+        "categoryName": "動物",
+        "parameterName": "animals"
+    },
+    {
+        "categoryName": "食べ物",
+        "parameterName": "food"
+    },
+    {
+        "categoryName": "スポーツ",
+        "parameterName": "sports"
+    },
+    {
+        "categoryName": "乗り物",
+        "parameterName": "transportation"
+    },
+    {
+        "categoryName": "旅行",
+        "parameterName": "travel"
+    },
+    {
+        "categoryName": "建物",
+        "parameterName": "buildings"
+    },
+    {
+        "categoryName": "音楽",
+        "parameterName": "music"
+    }
+]

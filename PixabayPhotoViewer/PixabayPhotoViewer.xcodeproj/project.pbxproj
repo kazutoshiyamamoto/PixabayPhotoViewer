@@ -28,6 +28,7 @@
 		FD9BD63422EC92D6009C10EC /* PixabayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD9BD63222EC92D6009C10EC /* PixabayCollectionViewCell.xib */; };
 		FDDBCB3723E1C50900BBB3A7 /* SearchResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDDBCB3623E1C50900BBB3A7 /* SearchResult.storyboard */; };
 		FDDBCB3923E1C5A700BBB3A7 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDBCB3823E1C5A700BBB3A7 /* SearchResultViewController.swift */; };
+		FDDBCB3C23E9C12000BBB3A7 /* SearchCategory.json in Resources */ = {isa = PBXBuildFile; fileRef = FDDBCB3B23E9C12000BBB3A7 /* SearchCategory.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		FD9BD63222EC92D6009C10EC /* PixabayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PixabayCollectionViewCell.xib; sourceTree = "<group>"; };
 		FDDBCB3623E1C50900BBB3A7 /* SearchResult.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResult.storyboard; sourceTree = "<group>"; };
 		FDDBCB3823E1C5A700BBB3A7 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		FDDBCB3B23E9C12000BBB3A7 /* SearchCategory.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SearchCategory.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 		FD45563523BDDD8200C521BC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FDDBCB3A23E9C10600BBB3A7 /* JSON */,
 				FD9BD62622EC90AD009C10EC /* Assets.xcassets */,
 				FD9BD62B22EC90AD009C10EC /* Info.plist */,
 			);
@@ -205,6 +208,14 @@
 			path = PixabayPhotoViewer;
 			sourceTree = "<group>";
 		};
+		FDDBCB3A23E9C10600BBB3A7 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				FDDBCB3B23E9C12000BBB3A7 /* SearchCategory.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -274,6 +285,7 @@
 				FD78AA6323CDFA9000149281 /* SearchMenu.storyboard in Resources */,
 				FD78AA6923D0A82400149281 /* TableViewCell.xib in Resources */,
 				FD1815C62377E43E00647658 /* PixabayCollectionFooterView.xib in Resources */,
+				FDDBCB3C23E9C12000BBB3A7 /* SearchCategory.json in Resources */,
 				FD9BD63422EC92D6009C10EC /* PixabayCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
