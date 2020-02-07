@@ -8,6 +8,11 @@
 
 import Foundation
 
+struct Category: Codable {
+    var categoryName: String
+    var parameterName: String
+}
+
 class JsonFileLoader {
     func loadJsonFile<T: Decodable>(resource: String, model: [T].Type, completionHandler: @escaping ([T]) -> ()) {
         guard let path = Bundle.main.path(forResource: resource, ofType: "json") else {
