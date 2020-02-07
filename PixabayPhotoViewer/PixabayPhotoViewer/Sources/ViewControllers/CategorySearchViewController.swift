@@ -12,23 +12,27 @@ class CategorySearchViewController: UIViewController {
     
     @IBOutlet weak var categoryMenuView: UITableView!
     
-    private let categoryMenuTitle = ["ファッション", "自然", "背景", "人", "場所", "動物", "食べ物", "スポーツ", "乗り物", "旅行", "建物", "音楽"]
+    private var categoryItems: [Category] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.categoryMenuView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
+        
+        JsonFileLoader().loadJsonFile(resource: "SearchCategory", model: [Category].self, completionHandler: { searchCategory in
+            self.categoryItems.append(contentsOf: searchCategory)
+        })
     }
 }
 
 extension CategorySearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.categoryMenuTitle.count
+        return self.categoryItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.categoryMenuView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
-        cell.titleLabel.text = self.categoryMenuTitle[indexPath.row]
+        cell.titleLabel.text = self.categoryItems[indexPath.row].categoryName
         return cell
     }
 }
