@@ -40,5 +40,9 @@ extension CategorySearchViewController: UITableViewDataSource {
 extension CategorySearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.categoryMenuView.deselectRow(at: indexPath, animated: true)
+        
+        let storyboard: UIStoryboard = UIStoryboard(name: "SearchResult", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "SearchResult") as! SearchResultViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
