@@ -43,6 +43,7 @@ extension CategorySearchViewController: UITableViewDelegate {
         
         let storyboard: UIStoryboard = UIStoryboard(name: "SearchResult", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SearchResult") as! SearchResultViewController
+        vc.searchCategory = self.categoryItems[indexPath.row].parameterName
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
