@@ -11,7 +11,7 @@
         <!--Search Result View Controller-->
         <scene sceneID="oTm-Be-FoM">
             <objects>
-                <viewController id="Wo3-ia-vDw" customClass="SearchResultViewController" customModule="PixabayPhotoViewer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchResult" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wo3-ia-vDw" customClass="SearchResultViewController" customModule="PixabayPhotoViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7SC-Zy-1tD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
