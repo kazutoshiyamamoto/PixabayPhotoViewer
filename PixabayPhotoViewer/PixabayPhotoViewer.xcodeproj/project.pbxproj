@@ -157,6 +157,7 @@
 				FD45563623BDE1C900C521BC /* Views */,
 				FD45563A23BDE40200C521BC /* ViewControllers */,
 				FD45563E23BDE50B00C521BC /* Models */,
+				FDDBCB4323F1A3C500BBB3A7 /* Consts */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -220,6 +221,13 @@
 				FDDBCB3B23E9C12000BBB3A7 /* SearchCategory.json */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		FDDBCB4323F1A3C500BBB3A7 /* Consts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Consts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
