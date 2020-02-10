@@ -19,10 +19,11 @@ struct Item: Codable {
 }
 
 class PixabayApi {
-    func fetchPixabayItems(pageNo: Int, perPage: Int, completion: @escaping (Item) -> ()) {
-        let url = URL(string: "https://pixabay.com/api/")!
+    func fetchPixabayItems(category: String?, searchWord: String?, page: Int?, perPage: Int?, completion: @escaping (Item) -> ()) {
+        let url = URL(string: Consts.apiUrl)!
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        components?.queryItems = [URLQueryItem(name: "key", value: "{APIKey}")] + [URLQueryItem(name: "page", value: "\(pageNo)")] + [URLQueryItem(name: "per_page", value: "\(perPage)")] + [URLQueryItem(name: "lang", value: "ja")] + [URLQueryItem(name: "q", value: "海")] + [URLQueryItem(name: "image_type", value: "photo")]
+        let queryItems = UrlQueryItemsGenerator().generateSearchQueryItems(category: category, searchWord: searchWord, page: page, perPage: perPage)
+        components?.queryItems = queryItems
         let queryStringAddedUrl = components?.url
         
         if let url = queryStringAddedUrl {
