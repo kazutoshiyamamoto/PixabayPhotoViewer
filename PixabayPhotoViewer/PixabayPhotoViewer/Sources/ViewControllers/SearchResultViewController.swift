@@ -22,7 +22,7 @@ class SearchResultViewController: UIViewController {
     private var isLastPageReached = false
     
     // 検索対象のカテゴリ
-    var searchCategory = ""
+    var categoryQuery = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
