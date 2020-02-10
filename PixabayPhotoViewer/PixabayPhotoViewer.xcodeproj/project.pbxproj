@@ -31,6 +31,7 @@
 		FDDBCB3C23E9C12000BBB3A7 /* SearchCategory.json in Resources */ = {isa = PBXBuildFile; fileRef = FDDBCB3B23E9C12000BBB3A7 /* SearchCategory.json */; };
 		FDDBCB3E23EDAC3700BBB3A7 /* JsonFileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDBCB3D23EDAC3700BBB3A7 /* JsonFileLoader.swift */; };
 		FDDBCB4023F19C7600BBB3A7 /* UrlQueryItemsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDBCB3F23F19C7600BBB3A7 /* UrlQueryItemsGenerator.swift */; };
+		FDDBCB4523F1A43100BBB3A7 /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDBCB4423F1A43100BBB3A7 /* Consts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		FDDBCB3B23E9C12000BBB3A7 /* SearchCategory.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SearchCategory.json; sourceTree = "<group>"; };
 		FDDBCB3D23EDAC3700BBB3A7 /* JsonFileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFileLoader.swift; sourceTree = "<group>"; };
 		FDDBCB3F23F19C7600BBB3A7 /* UrlQueryItemsGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlQueryItemsGenerator.swift; sourceTree = "<group>"; };
+		FDDBCB4423F1A43100BBB3A7 /* Consts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 		FDDBCB4323F1A3C500BBB3A7 /* Consts */ = {
 			isa = PBXGroup;
 			children = (
+				FDDBCB4423F1A43100BBB3A7 /* Consts.swift */,
 			);
 			path = Consts;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				FD1815C52377E43E00647658 /* PixabayCollectionFooterView.swift in Sources */,
 				FDDBCB4023F19C7600BBB3A7 /* UrlQueryItemsGenerator.swift in Sources */,
 				FD78AA6823D0A82400149281 /* TableViewCell.swift in Sources */,
+				FDDBCB4523F1A43100BBB3A7 /* Consts.swift in Sources */,
 				FDDBCB3E23EDAC3700BBB3A7 /* JsonFileLoader.swift in Sources */,
 				FDDBCB3923E1C5A700BBB3A7 /* SearchResultViewController.swift in Sources */,
 				FD78AA6523CF55E000149281 /* SearchMenuViewController.swift in Sources */,

@@ -10,13 +10,27 @@ import Foundation
 
 class UrlQueryItemsGenerator {
     // 商品一覧取得時のURLQueryItemを生成
-    func generateSearchQueryItems(category: String?, page: Int?, perPage: Int?) -> [URLQueryItem] {
+    func generateSearchQueryItems(category: String?, searchWord: String?, page: Int?, perPage: Int?) -> [URLQueryItem] {
         
         var namedValues: [(name: String, value: String)] = []
+        
+        let apiKey = (name: "key", value: "\(Consts.apiKey)")
+        namedValues.append(apiKey)
+        
+        let lang = (name: "lang", value: "ja")
+        namedValues.append(lang)
+        
+        let photo = (name: "image_type", value: "photo")
+        namedValues.append(photo)
         
         if category != nil {
             let category = (name: "category", value: "\(category!)")
             namedValues.append(category)
+        }
+        
+        if searchWord != nil {
+            let searchWord = (name: "q", value: "\(searchWord!)")
+            namedValues.append(searchWord)
         }
         
         if page != nil {
