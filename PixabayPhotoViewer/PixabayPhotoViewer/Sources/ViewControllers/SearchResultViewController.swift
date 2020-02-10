@@ -15,14 +15,16 @@ class SearchResultViewController: UIViewController {
     
     private let preheater = ImagePreheater()
     
-    private var searchResultItems: [Item.Hits] = []
-    private var pageNo = 1
+    // 検索対象のカテゴリ
+    var categoryQuery = ""
+    // 検索ワード
+    private var searchWord = ""
+    private var page = 1
     private var perPage = 60
     private var isLoadingList = false
     private var isLastPageReached = false
     
-    // 検索対象のカテゴリ
-    var categoryQuery = ""
+    private var searchResultItems: [Item.Hits] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +40,8 @@ class SearchResultViewController: UIViewController {
     
     private func displaySearchResultItems() {
         self.isLoadingList = true
-        PixabayApi().fetchPixabayItems(pageNo: self.pageNo, perPage: self.perPage, completion: { (searchResultItems) in
-            self.pageNo += 1
+        PixabayApi().fetchPixabayItems(category: self.categoryQuery, searchWord: self.searchWord, page: self.page, perPage: self.perPage, completion: { (searchResultItems) in
+            self.page += 1
             self.searchResultItems.append(contentsOf: searchResultItems.hits)
             
             // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
@@ -56,7 +58,7 @@ class SearchResultViewController: UIViewController {
     
     @objc func refresh(sender: UIRefreshControl) {
         // ページ番号を元に戻す
-        self.pageNo = 1
+        self.page = 1
         self.searchResultItems = []
         self.isLastPageReached = false
         self.displaySearchResultItems()
@@ -130,8 +132,8 @@ extension SearchResultViewController: UICollectionViewDelegate {
                 footerView.activityIndicatorView.startAnimating()
                 self.isLoadingList = true
                 
-                PixabayApi().fetchPixabayItems(pageNo: self.pageNo, perPage: self.perPage, completion: { (searchResultItems) in
-                    self.pageNo += 1
+                PixabayApi().fetchPixabayItems(category: self.categoryQuery, searchWord: self.searchWord, page: self.page, perPage: self.perPage, completion: { (searchResultItems) in
+                    self.page += 1
                     self.searchResultItems.append(contentsOf: searchResultItems.hits)
                     // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
                     if searchResultItems.hits.count == 0 || searchResultItems.hits.count % self.perPage != 0 || self.searchResultItems.count >= 500 {

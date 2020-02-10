@@ -14,7 +14,7 @@ class TopViewController: UIViewController {
     @IBOutlet weak var pixabayCollectionView: UICollectionView!
     
     private var items: [Item.Hits] = []
-    private var pageNo = 1
+    private var page = 1
     private var perPage = 60
     private var isLoadingList = false
     private var isLastPageReached = false
@@ -39,7 +39,7 @@ class TopViewController: UIViewController {
     
     @objc func refresh(sender: UIRefreshControl) {
         // ページ番号を元に戻す
-        self.pageNo = 1
+        self.page = 1
         self.items = []
         self.isLastPageReached = false
         self.setUpPixabayItems()
@@ -48,8 +48,8 @@ class TopViewController: UIViewController {
     
     private func setUpPixabayItems() {
         self.isLoadingList = true
-        PixabayApi().fetchPixabayItems(pageNo: self.pageNo, perPage: self.perPage, completion: { (item) in
-            self.pageNo += 1
+        PixabayApi().fetchPixabayItems(category: nil, searchWord: "海", page: self.page, perPage: self.perPage, completion: { (item) in
+            self.page += 1
             self.items.append(contentsOf: item.hits)
             
             // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
@@ -130,8 +130,8 @@ extension TopViewController: UICollectionViewDelegate {
                 footerView.activityIndicatorView.startAnimating()
                 self.isLoadingList = true
                 
-                PixabayApi().fetchPixabayItems(pageNo: self.pageNo, perPage: self.perPage, completion: { (item) in
-                    self.pageNo += 1
+                PixabayApi().fetchPixabayItems(category: nil, searchWord: "海", page: self.page, perPage: self.perPage, completion: { (item) in
+                    self.page += 1
                     self.items.append(contentsOf: item.hits)
                     // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
                     if item.hits.count == 0 || item.hits.count % self.perPage != 0 || self.items.count >= 500 {
