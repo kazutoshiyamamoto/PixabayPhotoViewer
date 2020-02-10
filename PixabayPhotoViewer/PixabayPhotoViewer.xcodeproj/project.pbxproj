@@ -30,6 +30,7 @@
 		FDDBCB3923E1C5A700BBB3A7 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDBCB3823E1C5A700BBB3A7 /* SearchResultViewController.swift */; };
 		FDDBCB3C23E9C12000BBB3A7 /* SearchCategory.json in Resources */ = {isa = PBXBuildFile; fileRef = FDDBCB3B23E9C12000BBB3A7 /* SearchCategory.json */; };
 		FDDBCB3E23EDAC3700BBB3A7 /* JsonFileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDBCB3D23EDAC3700BBB3A7 /* JsonFileLoader.swift */; };
+		FDDBCB4023F19C7600BBB3A7 /* UrlQueryItemsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDBCB3F23F19C7600BBB3A7 /* UrlQueryItemsGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		FDDBCB3823E1C5A700BBB3A7 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		FDDBCB3B23E9C12000BBB3A7 /* SearchCategory.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SearchCategory.json; sourceTree = "<group>"; };
 		FDDBCB3D23EDAC3700BBB3A7 /* JsonFileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFileLoader.swift; sourceTree = "<group>"; };
+		FDDBCB3F23F19C7600BBB3A7 /* UrlQueryItemsGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlQueryItemsGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 			children = (
 				FD45563F23BDE53000C521BC /* Network */,
 				FDDBCB3D23EDAC3700BBB3A7 /* JsonFileLoader.swift */,
+				FDDBCB3F23F19C7600BBB3A7 /* UrlQueryItemsGenerator.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD1815C52377E43E00647658 /* PixabayCollectionFooterView.swift in Sources */,
+				FDDBCB4023F19C7600BBB3A7 /* UrlQueryItemsGenerator.swift in Sources */,
 				FD78AA6823D0A82400149281 /* TableViewCell.swift in Sources */,
 				FDDBCB3E23EDAC3700BBB3A7 /* JsonFileLoader.swift in Sources */,
 				FDDBCB3923E1C5A700BBB3A7 /* SearchResultViewController.swift in Sources */,
