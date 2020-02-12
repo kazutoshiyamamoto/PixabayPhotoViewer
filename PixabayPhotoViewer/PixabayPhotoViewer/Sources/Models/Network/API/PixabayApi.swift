@@ -19,7 +19,7 @@ struct Item: Codable {
 }
 
 class PixabayApi {
-    func fetchPixabayItems(category: String?, searchWord: String?, page: Int?, perPage: Int?, completion: @escaping (Item) -> ()) {
+    func fetchPixabayItems(category: String?, searchWord: String?, page: Int?, perPage: Int?, completion: @escaping (Result<Item, Error>) -> ()) {
         let url = URL(string: Consts.apiUrl)!
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         let queryItems = UrlQueryItemsGenerator().generateSearchQueryItems(category: category, searchWord: searchWord, page: page, perPage: perPage)
@@ -33,9 +33,9 @@ class PixabayApi {
                     do {
                         let decoder = JSONDecoder()
                         let items = try decoder.decode(Item.self, from: data)
-                        completion(items)
-                    } catch {
-                        print("Serialize Error")
+                        completion(.success(items))
+                    } catch let error {
+                        completion(.failure(error))
                     }
                 } else {
                     print(error ?? "Error")
