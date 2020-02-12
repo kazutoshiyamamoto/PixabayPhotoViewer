@@ -40,18 +40,25 @@ class SearchResultViewController: UIViewController {
     
     private func displaySearchResultItems() {
         self.isLoadingList = true
-        PixabayApi().fetchPixabayItems(category: self.categoryQuery, searchWord: self.searchWord, page: self.page, perPage: self.perPage, completion: { (searchResultItems) in
-            self.page += 1
-            self.searchResultItems.append(contentsOf: searchResultItems.hits)
+        PixabayApi().fetchPixabayItems(category: self.categoryQuery, searchWord: self.searchWord, page: self.page, perPage: self.perPage, completion: { (result) in
             
-            // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
-            if searchResultItems.hits.count == 0 || searchResultItems.hits.count % self.perPage != 0 || self.searchResultItems.count >= 500 {
-                self.isLastPageReached = true
-            }
-            
-            DispatchQueue.main.async {
-                self.isLoadingList = false
-                self.searchResultView.reloadData()
+            switch result {
+            case .success(let item):
+                self.page += 1
+                self.searchResultItems.append(contentsOf: item.hits)
+                
+                // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
+                if item.hits.count == 0 || item.hits.count % self.perPage != 0 || self.searchResultItems.count >= 500 {
+                    self.isLastPageReached = true
+                }
+                
+                DispatchQueue.main.async {
+                    self.isLoadingList = false
+                    self.searchResultView.reloadData()
+                }
+                
+            case .failure(let error):
+                print(error)
             }
         })
     }
@@ -132,18 +139,25 @@ extension SearchResultViewController: UICollectionViewDelegate {
                 footerView.activityIndicatorView.startAnimating()
                 self.isLoadingList = true
                 
-                PixabayApi().fetchPixabayItems(category: self.categoryQuery, searchWord: self.searchWord, page: self.page, perPage: self.perPage, completion: { (searchResultItems) in
-                    self.page += 1
-                    self.searchResultItems.append(contentsOf: searchResultItems.hits)
-                    // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
-                    if searchResultItems.hits.count == 0 || searchResultItems.hits.count % self.perPage != 0 || self.searchResultItems.count >= 500 {
-                        self.isLastPageReached = true
-                    }
-                    DispatchQueue.main.async {
-                        self.isLoadingList = false
-                        footerView.activityIndicatorView.stopAnimating()
-                        footerView.isHidden = true
-                        self.searchResultView.reloadData()
+                PixabayApi().fetchPixabayItems(category: self.categoryQuery, searchWord: self.searchWord, page: self.page, perPage: self.perPage, completion: { (result) in
+                    
+                    switch result {
+                    case .success(let item):
+                        self.page += 1
+                        self.searchResultItems.append(contentsOf: item.hits)
+                        // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
+                        if item.hits.count == 0 || item.hits.count % self.perPage != 0 || self.searchResultItems.count >= 500 {
+                            self.isLastPageReached = true
+                        }
+                        DispatchQueue.main.async {
+                            self.isLoadingList = false
+                            footerView.activityIndicatorView.stopAnimating()
+                            footerView.isHidden = true
+                            self.searchResultView.reloadData()
+                        }
+                        
+                    case .failure(let error):
+                        print(error)
                     }
                 })
             }

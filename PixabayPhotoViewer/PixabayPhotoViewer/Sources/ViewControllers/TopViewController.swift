@@ -48,18 +48,25 @@ class TopViewController: UIViewController {
     
     private func setUpPixabayItems() {
         self.isLoadingList = true
-        PixabayApi().fetchPixabayItems(category: nil, searchWord: "海", page: self.page, perPage: self.perPage, completion: { (item) in
-            self.page += 1
-            self.items.append(contentsOf: item.hits)
+        PixabayApi().fetchPixabayItems(category: nil, searchWord: "海", page: self.page, perPage: self.perPage, completion: { (result) in
             
-            // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
-            if item.hits.count == 0 || item.hits.count % self.perPage != 0 || self.items.count >= 500 {
-                self.isLastPageReached = true
-            }
-            
-            DispatchQueue.main.async {
-                self.isLoadingList = false
-                self.pixabayCollectionView.reloadData()
+            switch result {
+            case .success(let item):
+                self.page += 1
+                self.items.append(contentsOf: item.hits)
+                
+                // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
+                if item.hits.count == 0 || item.hits.count % self.perPage != 0 || self.items.count >= 500 {
+                    self.isLastPageReached = true
+                }
+                
+                DispatchQueue.main.async {
+                    self.isLoadingList = false
+                    self.pixabayCollectionView.reloadData()
+                }
+                
+            case .failure(let error):
+                print(error)
             }
         })
     }
@@ -130,18 +137,27 @@ extension TopViewController: UICollectionViewDelegate {
                 footerView.activityIndicatorView.startAnimating()
                 self.isLoadingList = true
                 
-                PixabayApi().fetchPixabayItems(category: nil, searchWord: "海", page: self.page, perPage: self.perPage, completion: { (item) in
-                    self.page += 1
-                    self.items.append(contentsOf: item.hits)
-                    // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
-                    if item.hits.count == 0 || item.hits.count % self.perPage != 0 || self.items.count >= 500 {
-                        self.isLastPageReached = true
-                    }
-                    DispatchQueue.main.async {
-                        self.isLoadingList = false
-                        footerView.activityIndicatorView.stopAnimating()
-                        footerView.isHidden = true
-                        self.pixabayCollectionView.reloadData()
+                PixabayApi().fetchPixabayItems(category: nil, searchWord: "海", page: self.page, perPage: self.perPage, completion: { (result) in
+                    
+                    switch result {
+                    case .success(let item):
+                        self.page += 1
+                        self.items.append(contentsOf: item.hits)
+                        
+                        // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
+                        if item.hits.count == 0 || item.hits.count % self.perPage != 0 || self.items.count >= 500 {
+                            self.isLastPageReached = true
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self.isLoadingList = false
+                            footerView.activityIndicatorView.stopAnimating()
+                            footerView.isHidden = true
+                            self.pixabayCollectionView.reloadData()
+                        }
+                        
+                    case .failure(let error):
+                        print(error)
                     }
                 })
             }
