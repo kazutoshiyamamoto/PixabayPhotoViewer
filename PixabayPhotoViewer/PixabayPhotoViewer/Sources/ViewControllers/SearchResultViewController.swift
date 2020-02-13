@@ -48,7 +48,7 @@ class SearchResultViewController: UIViewController {
                 self.searchResultItems.append(contentsOf: item.hits)
                 
                 // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
-                if item.hits.count == 0 || item.hits.count % self.perPage != 0 || self.searchResultItems.count >= 500 {
+                if item.hits.count % self.perPage != 0 || self.searchResultItems.count >= 500 {
                     self.isLastPageReached = true
                 }
                 
@@ -146,7 +146,7 @@ extension SearchResultViewController: UICollectionViewDelegate {
                         self.page += 1
                         self.searchResultItems.append(contentsOf: item.hits)
                         // 返ってきたデータの数が0もしくは1ページあたりの件数で割り切れない数、PixabayAPIを介してアクセス可能な画像の上限に達した場合は最後のページにたどり着いたと判定する
-                        if item.hits.count == 0 || item.hits.count % self.perPage != 0 || self.searchResultItems.count >= 500 {
+                        if item.hits.count % self.perPage != 0 || self.searchResultItems.count >= 500 {
                             self.isLastPageReached = true
                         }
                         DispatchQueue.main.async {
