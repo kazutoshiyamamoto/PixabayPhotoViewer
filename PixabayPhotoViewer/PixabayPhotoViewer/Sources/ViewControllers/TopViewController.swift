@@ -67,6 +67,7 @@ class TopViewController: UIViewController {
                 
             case .failure(let error):
                 self.isLoadingList = false
+                self.isLastPageReached = true
                 print(error)
             }
         })
@@ -159,6 +160,7 @@ extension TopViewController: UICollectionViewDelegate {
                         
                     case .failure(let error):
                         self.isLoadingList = false
+                        self.isLastPageReached = true
                         print(error)
                     }
                 })
