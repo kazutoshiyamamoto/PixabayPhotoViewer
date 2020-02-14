@@ -58,6 +58,7 @@ class SearchResultViewController: UIViewController {
                 }
                 
             case .failure(let error):
+                self.isLoadingList = false
                 print(error)
             }
         })
@@ -157,6 +158,7 @@ extension SearchResultViewController: UICollectionViewDelegate {
                         }
                         
                     case .failure(let error):
+                        self.isLoadingList = false
                         print(error)
                     }
                 })

@@ -66,6 +66,7 @@ class TopViewController: UIViewController {
                 }
                 
             case .failure(let error):
+                self.isLoadingList = false
                 print(error)
             }
         })
@@ -157,6 +158,7 @@ extension TopViewController: UICollectionViewDelegate {
                         }
                         
                     case .failure(let error):
+                        self.isLoadingList = false
                         print(error)
                     }
                 })
