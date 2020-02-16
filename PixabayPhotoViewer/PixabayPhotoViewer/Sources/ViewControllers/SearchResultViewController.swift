@@ -15,6 +15,9 @@ class SearchResultViewController: UIViewController {
     
     private let preheater = ImagePreheater()
     
+    // 画面タイトル
+    var navigationBarTitle = ""
+    
     // 検索対象のカテゴリ
     var categoryQuery = ""
     // 検索ワード
