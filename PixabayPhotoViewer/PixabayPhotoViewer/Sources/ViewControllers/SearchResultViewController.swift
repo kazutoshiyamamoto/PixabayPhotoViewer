@@ -34,6 +34,8 @@ class SearchResultViewController: UIViewController {
         self.searchResultView.register(UINib(nibName: "PixabayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PixabayCollectionViewCell")
         self.searchResultView.register(UINib(nibName: "PixabayCollectionFooterView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "PixabayCollectionFooterView")
         
+        self.navigationItem.title = self.navigationBarTitle
+        
         self.displaySearchResultItems()
         
         let refreshControl = UIRefreshControl()
