@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Search-->
+        <!--検索-->
         <scene sceneID="WCM-vn-2fA">
             <objects>
                 <viewController id="gKz-eE-YSU" customClass="SearchMenuViewController" customModule="PixabayPhotoViewer" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,7 +35,7 @@
                         <viewLayoutGuide key="safeArea" id="b8L-V5-5qZ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="d1C-qX-Xoo"/>
-                    <navigationItem key="navigationItem" id="UDi-Rm-Hsg"/>
+                    <navigationItem key="navigationItem" title="検索" id="UDi-Rm-Hsg"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchMenuView" destination="a2D-JU-VIp" id="rYQ-5T-8PU"/>
