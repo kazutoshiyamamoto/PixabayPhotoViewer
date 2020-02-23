@@ -23,6 +23,7 @@ class SearchMenuViewController: UIViewController {
         
         self.searchController = UISearchController(searchResultsController: nil)
         self.navigationItem.searchController = self.searchController
+        self.navigationItem.hidesSearchBarWhenScrolling = false
         
         self.searchMenuView.tableFooterView = UIView()
     }
