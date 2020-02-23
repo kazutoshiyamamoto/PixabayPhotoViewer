@@ -12,7 +12,7 @@ class SearchMenuViewController: UIViewController {
     
     @IBOutlet weak var searchMenuView: UITableView!
     
-    private var searchController = UISearchController()
+    private var searchController:UISearchController!
     
     private let searchMenuTitle = ["カテゴリから探す"]
     
@@ -20,6 +20,8 @@ class SearchMenuViewController: UIViewController {
         super.viewDidLoad()
         
         self.searchMenuView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
+        
+        self.searchController = UISearchController(searchResultsController: nil)
         
         self.searchMenuView.tableFooterView = UIView()
     }
