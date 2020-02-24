@@ -17,11 +17,10 @@ class SearchResultViewController: UIViewController {
     
     // 画面タイトル
     var navigationBarTitle = ""
-    
     // 検索対象のカテゴリ
     var categoryQuery = ""
     // 検索ワード
-    private var searchWord = ""
+    var searchWord = ""
     private var page = 1
     private var perPage = 60
     private var isLoadingList = false
