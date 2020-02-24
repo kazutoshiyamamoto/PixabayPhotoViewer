@@ -23,6 +23,7 @@ class SearchMenuViewController: UIViewController {
         
         self.searchController = UISearchController(searchResultsController: nil)
         self.searchController.searchBar.placeholder = "画像を検索"
+        self.searchController.searchBar.delegate = self
         self.navigationItem.searchController = self.searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
         
@@ -51,4 +52,8 @@ extension SearchMenuViewController: UITableViewDelegate {
         let categorySearch = storyboard.instantiateViewController(withIdentifier: "CategorySearch")
         self.navigationController?.pushViewController(categorySearch, animated: true)
     }
+}
+
+extension SearchMenuViewController: UISearchBarDelegate {
+
 }
