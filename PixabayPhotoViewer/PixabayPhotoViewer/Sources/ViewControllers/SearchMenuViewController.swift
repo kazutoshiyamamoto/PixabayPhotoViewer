@@ -22,6 +22,7 @@ class SearchMenuViewController: UIViewController {
         self.searchMenuView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
         
         self.searchController = UISearchController(searchResultsController: nil)
+        self.searchController.searchBar.placeholder = "画像を検索"
         self.navigationItem.searchController = self.searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
         
