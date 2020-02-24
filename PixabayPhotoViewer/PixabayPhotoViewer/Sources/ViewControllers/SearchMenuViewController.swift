@@ -55,5 +55,11 @@ extension SearchMenuViewController: UITableViewDelegate {
 }
 
 extension SearchMenuViewController: UISearchBarDelegate {
-
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "SearchResult", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "SearchResult") as! SearchResultViewController
+        vc.navigationBarTitle = self.searchController.searchBar.text ?? ""
+        vc.searchWord = self.searchController.searchBar.text ?? ""
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
