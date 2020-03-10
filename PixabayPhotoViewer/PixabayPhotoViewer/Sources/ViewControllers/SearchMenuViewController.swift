@@ -12,7 +12,7 @@ class SearchMenuViewController: UIViewController {
     
     @IBOutlet weak var searchMenuView: UITableView!
     
-    private var searchController:UISearchController!
+    private var searchController: UISearchController!
     
     private let searchMenuTitle = ["カテゴリから探す"]
     
